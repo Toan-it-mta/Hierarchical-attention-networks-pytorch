@@ -6,27 +6,29 @@ from torch.utils.data.dataset import Dataset
 import csv
 from nltk.tokenize import sent_tokenize, word_tokenize
 import numpy as np
-
+from sklearn.preprocessing import LabelEncoder
+import numpy
+from tqdm import tqdm
 
 class MyDataset(Dataset):
 
-    def __init__(self, data_path, dict_path, max_length_sentences=30, max_length_word=35):
+    def __init__(self, data_path, dict_path, max_length_sentences=30, max_length_word=35,label_encode_path='./classes.npy'):
         super(MyDataset, self).__init__()
-
+        labelencoder = LabelEncoder()
+        labelencoder.classes_ = numpy.load(label_encode_path)
         texts, labels = [], []
         with open(data_path) as csv_file:
             reader = csv.reader(csv_file, quotechar='"')
-            for idx, line in enumerate(reader):
+            for idx, line in enumerate(tqdm(reader)):
                 text = ""
-                for tx in line[1:]:
+                for tx in line[0]:
                     text += tx.lower()
                     text += " "
-                label = int(line[0]) - 1
+                label = line[1]
                 texts.append(text)
                 labels.append(label)
-
         self.texts = texts
-        self.labels = labels
+        self.labels = list(labelencoder.transform(labels))
         self.dict = pd.read_csv(filepath_or_buffer=dict_path, header=None, sep=" ", quoting=csv.QUOTE_NONE,
                                 usecols=[0]).values
         self.dict = [word[0] for word in self.dict]
@@ -65,5 +67,5 @@ class MyDataset(Dataset):
 
 
 if __name__ == '__main__':
-    test = MyDataset(data_path="../data/test.csv", dict_path="../data/glove.6B.50d.txt")
+    test = MyDataset(data_path="./dataset/VNTC_csv/train.csv", dict_path="./models/glove.840B.300d.txt")
     print (test.__getitem__(index=1)[0].shape)

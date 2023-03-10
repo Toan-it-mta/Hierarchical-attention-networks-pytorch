@@ -1,3 +1,4 @@
 # Dataset
-    ./dataset/*
-    ./models/*
+dataset/*
+models/*
+src/__pycache__/*

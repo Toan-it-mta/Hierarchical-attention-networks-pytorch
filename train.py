@@ -17,7 +17,7 @@ import numpy as np
 def get_args():
     parser = argparse.ArgumentParser(
         """Implementation of the model described in the paper: Hierarchical Attention Networks for Document Classification""")
-    parser.add_argument("--batch_size", type=int, default=128)
+    parser.add_argument("--batch_size", type=int, default=5)
     parser.add_argument("--num_epoches", type=int, default=100)
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--momentum", type=float, default=0.9)
@@ -27,10 +27,10 @@ def get_args():
                         help="Early stopping's parameter: minimum change loss to qualify as an improvement")
     parser.add_argument("--es_patience", type=int, default=5,
                         help="Early stopping's parameter: number of epochs with no improvement after which training will be stopped. Set to 0 to disable this technique.")
-    parser.add_argument("--train_set", type=str, default="data/train.csv")
-    parser.add_argument("--test_set", type=str, default="data/test.csv")
+    parser.add_argument("--train_set", type=str, default="./dataset/VNTC_csv/train.csv")
+    parser.add_argument("--test_set", type=str, default="./dataset/VNTC_csv/test.csv")
     parser.add_argument("--test_interval", type=int, default=1, help="Number of epoches between testing phases")
-    parser.add_argument("--word2vec_path", type=str, default="data/glove.6B.50d.txt")
+    parser.add_argument("--word2vec_path", type=str, default="./models/glove.840B.300d.txt")
     parser.add_argument("--log_path", type=str, default="tensorboard/han_voc")
     parser.add_argument("--saved_path", type=str, default="trained_models")
     args = parser.parse_args()
@@ -75,6 +75,7 @@ def train(opt):
     best_loss = 1e5
     best_epoch = 0
     model.train()
+    print("="*10+"Train"+"+"*10)
     num_iter_per_epoch = len(training_generator)
     for epoch in range(opt.num_epoches):
         for iter, (feature, label) in enumerate(training_generator):
