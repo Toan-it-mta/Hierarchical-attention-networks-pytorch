@@ -12,25 +12,31 @@ from tensorboardX import SummaryWriter
 import argparse
 import shutil
 import numpy as np
+from torchsummary import summary
 
+import warnings
+warnings.filterwarnings("ignore")
+
+# import nltk
+# nltk.download('punkt')
 
 def get_args():
     parser = argparse.ArgumentParser(
         """Implementation of the model described in the paper: Hierarchical Attention Networks for Document Classification""")
-    parser.add_argument("--batch_size", type=int, default=5)
-    parser.add_argument("--num_epoches", type=int, default=100)
+    parser.add_argument("--batch_size", type=int, default=64)
+    parser.add_argument("--num_epoches", type=int, default=150)
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--momentum", type=float, default=0.9)
     parser.add_argument("--word_hidden_size", type=int, default=50)
     parser.add_argument("--sent_hidden_size", type=int, default=50)
     parser.add_argument("--es_min_delta", type=float, default=0.0,
                         help="Early stopping's parameter: minimum change loss to qualify as an improvement")
-    parser.add_argument("--es_patience", type=int, default=5,
+    parser.add_argument("--es_patience", type=int, default=10,
                         help="Early stopping's parameter: number of epochs with no improvement after which training will be stopped. Set to 0 to disable this technique.")
-    parser.add_argument("--train_set", type=str, default="./dataset/VNTC_csv/train.csv")
-    parser.add_argument("--test_set", type=str, default="./dataset/VNTC_csv/test.csv")
+    parser.add_argument("--train_set", type=str, default="/content/drive/MyDrive/Thu_nghiem/Nguyen_Phuc_Toan/VOSINTS/Hierarchical-attention-networks-pytorch/dataset/plcd/train.npy")
+    parser.add_argument("--test_set", type=str, default="/content/drive/MyDrive/Thu_nghiem/Nguyen_Phuc_Toan/VOSINTS/Hierarchical-attention-networks-pytorch/dataset/plcd/test.npy")
     parser.add_argument("--test_interval", type=int, default=1, help="Number of epoches between testing phases")
-    parser.add_argument("--word2vec_path", type=str, default="./models/glove.840B.300d.txt")
+    parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.npy")
     parser.add_argument("--log_path", type=str, default="tensorboard/han_voc")
     parser.add_argument("--saved_path", type=str, default="trained_models")
     args = parser.parse_args()
@@ -38,28 +44,37 @@ def get_args():
 
 
 def train(opt):
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed(123)
-    else:
-        torch.manual_seed(123)
+    # if torch.cuda.is_available():
+    #     torch.cuda.manual_seed(123)
+    # else:
+    #     torch.manual_seed(123)
     output_file = open(opt.saved_path + os.sep + "logs.txt", "w")
     output_file.write("Model's parameters: {}".format(vars(opt)))
     training_params = {"batch_size": opt.batch_size,
                        "shuffle": True,
                        "drop_last": True}
     test_params = {"batch_size": opt.batch_size,
-                   "shuffle": False,
+                   "shuffle": True,
                    "drop_last": False}
 
-    max_word_length, max_sent_length = get_max_lengths(opt.train_set)
-    training_set = MyDataset(opt.train_set, opt.word2vec_path, max_sent_length, max_word_length)
-    training_generator = DataLoader(training_set, **training_params)
-    test_set = MyDataset(opt.test_set, opt.word2vec_path, max_sent_length, max_word_length)
+    # max_word_length, max_sent_length = get_max_lengths(opt.train_set)
+    max_word_length, max_sent_length = 30,35
+    print(max_word_length, max_sent_length)
+    print("=== Load Train Dataset ===")
+    training_set = MyDataset(opt.train_set, opt.word2vec_path, max_sent_length, max_word_length,True)
+    training_generator = DataLoader(training_set, pin_memory=True, **training_params)
+    print("=== Load Test Dataset ===")
+    test_set = MyDataset(opt.test_set, opt.word2vec_path, max_sent_length, max_word_length,True)
     test_generator = DataLoader(test_set, **test_params)
-
+    # test_set = training_set
+    # test_generator = training_generator
+    print("=== Init Model ===")
+    # training_set.num_classes = 10
     model = HierAttNet(opt.word_hidden_size, opt.sent_hidden_size, opt.batch_size, training_set.num_classes,
                        opt.word2vec_path, max_sent_length, max_word_length)
 
+    print(model)
+    print("=== Init Model  Done ===")
 
     if os.path.isdir(opt.log_path):
         shutil.rmtree(opt.log_path)
