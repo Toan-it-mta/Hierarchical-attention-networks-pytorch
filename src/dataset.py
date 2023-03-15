@@ -7,12 +7,12 @@ from pandas.io.pickle import pickle
 from torch.utils.data.dataset import Dataset
 import csv
 from nltk.tokenize import sent_tokenize, word_tokenize
+
 import numpy as np
 from tqdm import tqdm
 
 class MyDataset(Dataset):
-
-    def __init__(self, data_path, dict_path, max_length_sentences=30, max_length_word=35,is_processed_data = False):
+    def __init__(self, data_path, dict_path, max_length_sentences=100, max_length_word=50,is_processed_data = False):
         super(MyDataset, self).__init__()
         self.max_length_sentences = max_length_sentences
         self.max_length_word = max_length_word
@@ -38,14 +38,15 @@ class MyDataset(Dataset):
             for idx,word in enumerate(self.dict):
                 self.new_dict[word] = idx
             self.documents_encode = self.process()
+            assert len(self.documents_encode) == len(self.labels)
             dataset = [self.documents_encode,self.labels]
-            dataset = np.array(dataset)
+            new_dataset = np.asarray(dataset,dtype=object)
             args_path = data_path.split("/")
             print(args_path)
             name_file = args_path[-1].split('.')[0]
             print(name_file)
             str_path = "/".join(args_path[:-1])
-            np.save(str_path+'/'+name_file+'.npy',dataset)
+            np.save(str_path+'/'+name_file+'.npy',new_dataset)
         else:
             dataset = np.load(data_path,allow_pickle=True)
             self.documents_encode = dataset[0]
@@ -121,10 +122,9 @@ class MyDataset(Dataset):
 
 
 if __name__ == '__main__':
-    train = MyDataset(data_path="/content/drive/MyDrive/Thu_nghiem/Nguyen_Phuc_Toan/VOSINTS/Hierarchical-attention-networks-pytorch/dataset/plcd/train.csv",
-     dict_path="/content/drive/MyDrive/Thu_nghiem/Nguyen_Phuc_Toan/VOSINTS/Hierarchical-attention-networks-pytorch/models/glove.6B.300d.txt",
+    train = MyDataset(data_path="./dataset/plcx/train.csv",
+     dict_path="./models/glove.6B.300d.txt",
      is_processed_data=False)
-    test = MyDataset(data_path="/content/drive/MyDrive/Thu_nghiem/Nguyen_Phuc_Toan/VOSINTS/Hierarchical-attention-networks-pytorch/dataset/plcd/test.csv",
-    dict_path="/content/drive/MyDrive/Thu_nghiem/Nguyen_Phuc_Toan/VOSINTS/Hierarchical-attention-networks-pytorch/models/glove.6B.300d.txt",
+    test = MyDataset(data_path="./dataset/plcx/test.csv",
+    dict_path="./models/glove.6B.300d.txt",
     is_processed_data=False)
-    # print (test.__getitem__(index=1)[0].shape)

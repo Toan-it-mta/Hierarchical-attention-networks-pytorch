@@ -11,16 +11,16 @@ import argparse
 import shutil
 import csv
 import numpy as np
-
+from sklearn.preprocessing import LabelEncoder
 
 def get_args():
     parser = argparse.ArgumentParser(
         """Implementation of the model described in the paper: Hierarchical Attention Networks for Document Classification""")
     parser.add_argument("--batch_size", type=int, default=128)
-    parser.add_argument("--data_path", type=str, default="data/test.csv")
-    parser.add_argument("--pre_trained_model", type=str, default="trained_models/whole_model_han")
-    parser.add_argument("--word2vec_path", type=str, default="data/glove.6B.50d.txt")
-    parser.add_argument("--output", type=str, default="predictions")
+    parser.add_argument("--data_path", type=str, default="./dataset/plcx/test.csv")
+    parser.add_argument("--pre_trained_model", type=str, default="./trained_models/plcx/best_model.pt")
+    parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.txt")
+    parser.add_argument("--output", type=str, default="predictions/plcx")
     args = parser.parse_args()
     return args
 
@@ -56,14 +56,18 @@ def test(opt):
         te_pred_ls.append(te_predictions.clone().cpu())
     te_pred = torch.cat(te_pred_ls, 0).numpy()
     te_label = np.array(te_label_ls)
-
+    encoder = LabelEncoder()
+    encoder.classes_ = np.load("./dataset/plcd/classes.npy")
     fieldnames = ['True label', 'Predicted label', 'Content']
     with open(opt.output + os.sep + "predictions.csv", 'w') as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames, quoting=csv.QUOTE_NONNUMERIC)
         writer.writeheader()
+        
         for i, j, k in zip(te_label, te_pred, test_set.texts):
+            true_labels = encoder.inverse_transform([i+3])[0]
+            pred_labels = encoder.inverse_transform([np.argmax(j)+3])[0]
             writer.writerow(
-                {'True label': i + 1, 'Predicted label': np.argmax(j) + 1, 'Content': k})
+                {'True label': true_labels, 'Predicted label': pred_labels, 'Content': k})
 
     test_metrics = get_evaluation(te_label, te_pred,
                                   list_metrics=["accuracy", "loss", "confusion_matrix"])

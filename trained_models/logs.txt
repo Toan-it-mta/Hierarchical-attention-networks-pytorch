@@ -1,0 +1,2380 @@
+Model's parameters: {'batch_size': 32, 'num_epoches': 150, 'lr': 0.1, 'momentum': 0.9, 'word_hidden_size': 50, 'sent_hidden_size': 50, 'es_min_delta': 0.0, 'es_patience': 10, 'train_set': './dataset/plcd/train.npy', 'test_set': './dataset/plcd/test.npy', 'test_interval': 5, 'word2vec_path': './models/glove.6B.300d.npy', 'log_path': 'tensorboard/han_voc', 'saved_path': 'trained_models'}Epoch: 1/150 
+Test loss: 1.0783798694610596 Test accuracy: 0.45980707395498394 
+Test confusion matrix: 
+[[  0   0 106]
+ [  0   0  62]
+ [  0   0 143]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.00      0.00      0.00       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.46      1.00      0.63       143
+
+    accuracy                           0.46       311
+   macro avg       0.15      0.33      0.21       311
+weighted avg       0.21      0.46      0.29       311
+
+Epoch: 1/150 
+Test loss: 1.0549341440200806 Test accuracy: 0.45980707395498394 
+Test confusion matrix: 
+[[  0   0 106]
+ [  0   0  62]
+ [  0   0 143]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.00      0.00      0.00       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.46      1.00      0.63       143
+
+    accuracy                           0.46       311
+   macro avg       0.15      0.33      0.21       311
+weighted avg       0.21      0.46      0.29       311
+
+Epoch: 1/150 
+Test loss: 1.1296045780181885 Test accuracy: 0.3408360128617363 
+Test confusion matrix: 
+[[106   0   0]
+ [ 62   0   0]
+ [143   0   0]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.34      1.00      0.51       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.00      0.00      0.00       143
+
+    accuracy                           0.34       311
+   macro avg       0.11      0.33      0.17       311
+weighted avg       0.12      0.34      0.17       311
+
+Epoch: 1/150 
+Test loss: 1.0701148509979248 Test accuracy: 0.45980707395498394 
+Test confusion matrix: 
+[[  0   0 106]
+ [  0   0  62]
+ [  0   0 143]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.00      0.00      0.00       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.46      1.00      0.63       143
+
+    accuracy                           0.46       311
+   macro avg       0.15      0.33      0.21       311
+weighted avg       0.21      0.46      0.29       311
+
+Epoch: 1/150 
+Test loss: 1.082586646080017 Test accuracy: 0.3408360128617363 
+Test confusion matrix: 
+[[106   0   0]
+ [ 62   0   0]
+ [143   0   0]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.34      1.00      0.51       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.00      0.00      0.00       143
+
+    accuracy                           0.34       311
+   macro avg       0.11      0.33      0.17       311
+weighted avg       0.12      0.34      0.17       311
+
+Epoch: 2/150 
+Test loss: 1.0800613164901733 Test accuracy: 0.3408360128617363 
+Test confusion matrix: 
+[[106   0   0]
+ [ 62   0   0]
+ [143   0   0]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.34      1.00      0.51       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.00      0.00      0.00       143
+
+    accuracy                           0.34       311
+   macro avg       0.11      0.33      0.17       311
+weighted avg       0.12      0.34      0.17       311
+
+Epoch: 2/150 
+Test loss: 1.0282801389694214 Test accuracy: 0.4533762057877814 
+Test confusion matrix: 
+[[  0   9  97]
+ [  0   1  61]
+ [  0   3 140]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.00      0.00      0.00       106
+      ktvhxh       0.08      0.02      0.03        62
+      quansu       0.47      0.98      0.63       143
+
+    accuracy                           0.45       311
+   macro avg       0.18      0.33      0.22       311
+weighted avg       0.23      0.45      0.30       311
+
+Epoch: 2/150 
+Test loss: 0.9944223761558533 Test accuracy: 0.48231511254019294 
+Test confusion matrix: 
+[[  9   5  92]
+ [ 10   1  51]
+ [  1   2 140]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.45      0.08      0.14       106
+      ktvhxh       0.12      0.02      0.03        62
+      quansu       0.49      0.98      0.66       143
+
+    accuracy                           0.48       311
+   macro avg       0.36      0.36      0.28       311
+weighted avg       0.41      0.48      0.36       311
+
+Epoch: 2/150 
+Test loss: 1.033697247505188 Test accuracy: 0.3665594855305466 
+Test confusion matrix: 
+[[ 99   0   7]
+ [ 60   0   2]
+ [128   0  15]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.34      0.93      0.50       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.62      0.10      0.18       143
+
+    accuracy                           0.37       311
+   macro avg       0.32      0.35      0.23       311
+weighted avg       0.40      0.37      0.25       311
+
+Epoch: 2/150 
+Test loss: 1.020129680633545 Test accuracy: 0.5112540192926045 
+Test confusion matrix: 
+[[  0  52  54]
+ [  0  43  19]
+ [  0  27 116]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.00      0.00      0.00       106
+      ktvhxh       0.35      0.69      0.47        62
+      quansu       0.61      0.81      0.70       143
+
+    accuracy                           0.51       311
+   macro avg       0.32      0.50      0.39       311
+weighted avg       0.35      0.51      0.41       311
+
+Epoch: 3/150 
+Test loss: 1.0132551193237305 Test accuracy: 0.4855305466237942 
+Test confusion matrix: 
+[[  0  14  92]
+ [  0  12  50]
+ [  0   4 139]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.00      0.00      0.00       106
+      ktvhxh       0.40      0.19      0.26        62
+      quansu       0.49      0.97      0.66       143
+
+    accuracy                           0.49       311
+   macro avg       0.30      0.39      0.31       311
+weighted avg       0.31      0.49      0.35       311
+
+Epoch: 3/150 
+Test loss: 1.0462149381637573 Test accuracy: 0.3536977491961415 
+Test confusion matrix: 
+[[ 81  19   6]
+ [ 48  12   2]
+ [122   4  17]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.32      0.76      0.45       106
+      ktvhxh       0.34      0.19      0.25        62
+      quansu       0.68      0.12      0.20       143
+
+    accuracy                           0.35       311
+   macro avg       0.45      0.36      0.30       311
+weighted avg       0.49      0.35      0.30       311
+
+Epoch: 3/150 
+Test loss: 0.9239410758018494 Test accuracy: 0.5530546623794212 
+Test confusion matrix: 
+[[ 23  23  60]
+ [ 16  17  29]
+ [  7   4 132]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.50      0.22      0.30       106
+      ktvhxh       0.39      0.27      0.32        62
+      quansu       0.60      0.92      0.73       143
+
+    accuracy                           0.55       311
+   macro avg       0.49      0.47      0.45       311
+weighted avg       0.52      0.55      0.50       311
+
+Epoch: 3/150 
+Test loss: 0.9117674231529236 Test accuracy: 0.5691318327974276 
+Test confusion matrix: 
+[[ 18  49  39]
+ [ 13  37  12]
+ [  9  12 122]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.45      0.17      0.25       106
+      ktvhxh       0.38      0.60      0.46        62
+      quansu       0.71      0.85      0.77       143
+
+    accuracy                           0.57       311
+   macro avg       0.51      0.54      0.49       311
+weighted avg       0.55      0.57      0.53       311
+
+Epoch: 3/150 
+Test loss: 0.8568568825721741 Test accuracy: 0.5980707395498392 
+Test confusion matrix: 
+[[ 49  19  38]
+ [ 36  13  13]
+ [ 15   4 124]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.49      0.46      0.48       106
+      ktvhxh       0.36      0.21      0.27        62
+      quansu       0.71      0.87      0.78       143
+
+    accuracy                           0.60       311
+   macro avg       0.52      0.51      0.51       311
+weighted avg       0.56      0.60      0.57       311
+
+Epoch: 4/150 
+Test loss: 0.8752855658531189 Test accuracy: 0.5787781350482315 
+Test confusion matrix: 
+[[ 39  10  57]
+ [ 23   8  31]
+ [  7   3 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.57      0.37      0.45       106
+      ktvhxh       0.38      0.13      0.19        62
+      quansu       0.60      0.93      0.73       143
+
+    accuracy                           0.58       311
+   macro avg       0.52      0.48      0.46       311
+weighted avg       0.55      0.58      0.53       311
+
+Epoch: 4/150 
+Test loss: 0.9941979050636292 Test accuracy: 0.4565916398713826 
+Test confusion matrix: 
+[[48 51  7]
+ [21 39  2]
+ [75 13 55]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.33      0.45      0.38       106
+      ktvhxh       0.38      0.63      0.47        62
+      quansu       0.86      0.38      0.53       143
+
+    accuracy                           0.46       311
+   macro avg       0.52      0.49      0.46       311
+weighted avg       0.58      0.46      0.47       311
+
+Epoch: 4/150 
+Test loss: 1.0218359231948853 Test accuracy: 0.4212218649517685 
+Test confusion matrix: 
+[[ 67  38   1]
+ [ 28  33   1]
+ [103   9  31]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.34      0.63      0.44       106
+      ktvhxh       0.41      0.53      0.46        62
+      quansu       0.94      0.22      0.35       143
+
+    accuracy                           0.42       311
+   macro avg       0.56      0.46      0.42       311
+weighted avg       0.63      0.42      0.40       311
+
+Epoch: 4/150 
+Test loss: 0.9634273648262024 Test accuracy: 0.4694533762057878 
+Test confusion matrix: 
+[[  0  11  95]
+ [  0   4  58]
+ [  0   1 142]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.00      0.00      0.00       106
+      ktvhxh       0.25      0.06      0.10        62
+      quansu       0.48      0.99      0.65       143
+
+    accuracy                           0.47       311
+   macro avg       0.24      0.35      0.25       311
+weighted avg       0.27      0.47      0.32       311
+
+Epoch: 4/150 
+Test loss: 0.8181473016738892 Test accuracy: 0.6655948553054662 
+Test confusion matrix: 
+[[ 63  15  28]
+ [ 31  20  11]
+ [ 14   5 124]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.58      0.59      0.59       106
+      ktvhxh       0.50      0.32      0.39        62
+      quansu       0.76      0.87      0.81       143
+
+    accuracy                           0.67       311
+   macro avg       0.61      0.59      0.60       311
+weighted avg       0.65      0.67      0.65       311
+
+Epoch: 5/150 
+Test loss: 0.7889253497123718 Test accuracy: 0.6559485530546624 
+Test confusion matrix: 
+[[ 81   0  25]
+ [ 53   0   9]
+ [ 20   0 123]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.53      0.76      0.62       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.78      0.86      0.82       143
+
+    accuracy                           0.66       311
+   macro avg       0.44      0.54      0.48       311
+weighted avg       0.54      0.66      0.59       311
+
+Epoch: 5/150 
+Test loss: 0.7506648898124695 Test accuracy: 0.662379421221865 
+Test confusion matrix: 
+[[ 73   0  33]
+ [ 45   0  17]
+ [ 10   0 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.57      0.69      0.62       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.73      0.93      0.82       143
+
+    accuracy                           0.66       311
+   macro avg       0.43      0.54      0.48       311
+weighted avg       0.53      0.66      0.59       311
+
+Epoch: 5/150 
+Test loss: 0.760749876499176 Test accuracy: 0.6109324758842444 
+Test confusion matrix: 
+[[ 17  73  16]
+ [  1  54   7]
+ [  0  24 119]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.94      0.16      0.27       106
+      ktvhxh       0.36      0.87      0.51        62
+      quansu       0.84      0.83      0.84       143
+
+    accuracy                           0.61       311
+   macro avg       0.71      0.62      0.54       311
+weighted avg       0.78      0.61      0.58       311
+
+Epoch: 5/150 
+Test loss: 0.7890728116035461 Test accuracy: 0.6334405144694534 
+Test confusion matrix: 
+[[ 32  67   7]
+ [  4  56   2]
+ [  3  31 109]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.82      0.30      0.44       106
+      ktvhxh       0.36      0.90      0.52        62
+      quansu       0.92      0.76      0.84       143
+
+    accuracy                           0.63       311
+   macro avg       0.70      0.66      0.60       311
+weighted avg       0.78      0.63      0.64       311
+
+Epoch: 5/150 
+Test loss: 0.7015509605407715 Test accuracy: 0.6784565916398714 
+Test confusion matrix: 
+[[ 77   0  29]
+ [ 42   0  20]
+ [  9   0 134]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.60      0.73      0.66       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.73      0.94      0.82       143
+
+    accuracy                           0.68       311
+   macro avg       0.44      0.55      0.49       311
+weighted avg       0.54      0.68      0.60       311
+
+Epoch: 6/150 
+Test loss: 0.8060336112976074 Test accuracy: 0.6495176848874598 
+Test confusion matrix: 
+[[ 65   0  41]
+ [ 37   0  25]
+ [  6   0 137]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.60      0.61      0.61       106
+      ktvhxh       0.00      0.00      0.00        62
+      quansu       0.67      0.96      0.79       143
+
+    accuracy                           0.65       311
+   macro avg       0.43      0.52      0.47       311
+weighted avg       0.52      0.65      0.57       311
+
+Epoch: 6/150 
+Test loss: 0.7145329117774963 Test accuracy: 0.6977491961414791 
+Test confusion matrix: 
+[[ 92   8   6]
+ [ 48  12   2]
+ [ 18  12 113]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.58      0.87      0.70       106
+      ktvhxh       0.38      0.19      0.26        62
+      quansu       0.93      0.79      0.86       143
+
+    accuracy                           0.70       311
+   macro avg       0.63      0.62      0.60       311
+weighted avg       0.70      0.70      0.68       311
+
+Epoch: 6/150 
+Test loss: 0.6298142671585083 Test accuracy: 0.7363344051446945 
+Test confusion matrix: 
+[[ 55  34  17]
+ [  9  41  12]
+ [  1   9 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.85      0.52      0.64       106
+      ktvhxh       0.49      0.66      0.56        62
+      quansu       0.82      0.93      0.87       143
+
+    accuracy                           0.74       311
+   macro avg       0.72      0.70      0.69       311
+weighted avg       0.76      0.74      0.73       311
+
+Epoch: 6/150 
+Test loss: 0.5716301798820496 Test accuracy: 0.7363344051446945 
+Test confusion matrix: 
+[[ 89   4  13]
+ [ 47   8   7]
+ [ 10   1 132]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.61      0.84      0.71       106
+      ktvhxh       0.62      0.13      0.21        62
+      quansu       0.87      0.92      0.89       143
+
+    accuracy                           0.74       311
+   macro avg       0.70      0.63      0.60       311
+weighted avg       0.73      0.74      0.69       311
+
+Epoch: 6/150 
+Test loss: 0.553835928440094 Test accuracy: 0.7363344051446945 
+Test confusion matrix: 
+[[ 85  10  11]
+ [ 43  12   7]
+ [  8   3 132]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.62      0.80      0.70       106
+      ktvhxh       0.48      0.19      0.28        62
+      quansu       0.88      0.92      0.90       143
+
+    accuracy                           0.74       311
+   macro avg       0.66      0.64      0.63       311
+weighted avg       0.71      0.74      0.71       311
+
+Epoch: 7/150 
+Test loss: 0.5650774836540222 Test accuracy: 0.7459807073954984 
+Test confusion matrix: 
+[[ 87  11   8]
+ [ 43  17   2]
+ [ 10   5 128]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.62      0.82      0.71       106
+      ktvhxh       0.52      0.27      0.36        62
+      quansu       0.93      0.90      0.91       143
+
+    accuracy                           0.75       311
+   macro avg       0.69      0.66      0.66       311
+weighted avg       0.74      0.75      0.73       311
+
+Epoch: 7/150 
+Test loss: 0.6303526163101196 Test accuracy: 0.7170418006430869 
+Test confusion matrix: 
+[[ 42  44  20]
+ [  4  45  13]
+ [  0   7 136]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.91      0.40      0.55       106
+      ktvhxh       0.47      0.73      0.57        62
+      quansu       0.80      0.95      0.87       143
+
+    accuracy                           0.72       311
+   macro avg       0.73      0.69      0.66       311
+weighted avg       0.77      0.72      0.70       311
+
+Epoch: 7/150 
+Test loss: 0.5330001711845398 Test accuracy: 0.7491961414790996 
+Test confusion matrix: 
+[[ 77  15  14]
+ [ 30  21  11]
+ [  4   4 135]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.69      0.73      0.71       106
+      ktvhxh       0.53      0.34      0.41        62
+      quansu       0.84      0.94      0.89       143
+
+    accuracy                           0.75       311
+   macro avg       0.69      0.67      0.67       311
+weighted avg       0.73      0.75      0.73       311
+
+Epoch: 7/150 
+Test loss: 0.6223857402801514 Test accuracy: 0.7106109324758842 
+Test confusion matrix: 
+[[ 79  21   6]
+ [ 32  30   0]
+ [ 10  21 112]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.65      0.75      0.70       106
+      ktvhxh       0.42      0.48      0.45        62
+      quansu       0.95      0.78      0.86       143
+
+    accuracy                           0.71       311
+   macro avg       0.67      0.67      0.67       311
+weighted avg       0.74      0.71      0.72       311
+
+Epoch: 7/150 
+Test loss: 0.6025292277336121 Test accuracy: 0.7556270096463023 
+Test confusion matrix: 
+[[ 53  31  22]
+ [  6  43  13]
+ [  0   4 139]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.90      0.50      0.64       106
+      ktvhxh       0.55      0.69      0.61        62
+      quansu       0.80      0.97      0.88       143
+
+    accuracy                           0.76       311
+   macro avg       0.75      0.72      0.71       311
+weighted avg       0.78      0.76      0.74       311
+
+Epoch: 8/150 
+Test loss: 0.5079061985015869 Test accuracy: 0.7877813504823151 
+Test confusion matrix: 
+[[ 74  24   8]
+ [ 24  37   1]
+ [  3   6 134]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.73      0.70      0.71       106
+      ktvhxh       0.55      0.60      0.57        62
+      quansu       0.94      0.94      0.94       143
+
+    accuracy                           0.79       311
+   macro avg       0.74      0.74      0.74       311
+weighted avg       0.79      0.79      0.79       311
+
+Epoch: 8/150 
+Test loss: 0.5618138313293457 Test accuracy: 0.7491961414790996 
+Test confusion matrix: 
+[[ 71  15  20]
+ [ 26  22  14]
+ [  2   1 140]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.67      0.69       106
+      ktvhxh       0.58      0.35      0.44        62
+      quansu       0.80      0.98      0.88       143
+
+    accuracy                           0.75       311
+   macro avg       0.70      0.67      0.67       311
+weighted avg       0.73      0.75      0.73       311
+
+Epoch: 8/150 
+Test loss: 0.5273756980895996 Test accuracy: 0.7813504823151125 
+Test confusion matrix: 
+[[ 68  31   7]
+ [ 15  47   0]
+ [  7   8 128]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.76      0.64      0.69       106
+      ktvhxh       0.55      0.76      0.64        62
+      quansu       0.95      0.90      0.92       143
+
+    accuracy                           0.78       311
+   macro avg       0.75      0.76      0.75       311
+weighted avg       0.80      0.78      0.79       311
+
+Epoch: 8/150 
+Test loss: 0.5205808281898499 Test accuracy: 0.7556270096463023 
+Test confusion matrix: 
+[[ 62  29  15]
+ [ 14  38  10]
+ [  4   4 135]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.78      0.58      0.67       106
+      ktvhxh       0.54      0.61      0.57        62
+      quansu       0.84      0.94      0.89       143
+
+    accuracy                           0.76       311
+   macro avg       0.72      0.71      0.71       311
+weighted avg       0.76      0.76      0.75       311
+
+Epoch: 8/150 
+Test loss: 0.5426836609840393 Test accuracy: 0.7491961414790996 
+Test confusion matrix: 
+[[ 97   2   7]
+ [ 54   5   3]
+ [ 12   0 131]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.60      0.92      0.72       106
+      ktvhxh       0.71      0.08      0.14        62
+      quansu       0.93      0.92      0.92       143
+
+    accuracy                           0.75       311
+   macro avg       0.75      0.64      0.60       311
+weighted avg       0.77      0.75      0.70       311
+
+Epoch: 9/150 
+Test loss: 0.533301591873169 Test accuracy: 0.7620578778135049 
+Test confusion matrix: 
+[[ 96   4   6]
+ [ 51  11   0]
+ [ 13   0 130]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.60      0.91      0.72       106
+      ktvhxh       0.73      0.18      0.29        62
+      quansu       0.96      0.91      0.93       143
+
+    accuracy                           0.76       311
+   macro avg       0.76      0.66      0.65       311
+weighted avg       0.79      0.76      0.73       311
+
+Epoch: 9/150 
+Test loss: 0.6157612800598145 Test accuracy: 0.7331189710610932 
+Test confusion matrix: 
+[[ 34  64   8]
+ [  0  62   0]
+ [  0  11 132]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       1.00      0.32      0.49       106
+      ktvhxh       0.45      1.00      0.62        62
+      quansu       0.94      0.92      0.93       143
+
+    accuracy                           0.73       311
+   macro avg       0.80      0.75      0.68       311
+weighted avg       0.86      0.73      0.72       311
+
+Epoch: 9/150 
+Test loss: 0.4889993369579315 Test accuracy: 0.7395498392282959 
+Test confusion matrix: 
+[[ 91   4  11]
+ [ 49   6   7]
+ [  9   1 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.61      0.86      0.71       106
+      ktvhxh       0.55      0.10      0.16        62
+      quansu       0.88      0.93      0.90       143
+
+    accuracy                           0.74       311
+   macro avg       0.68      0.63      0.59       311
+weighted avg       0.72      0.74      0.69       311
+
+Epoch: 9/150 
+Test loss: 0.4567583501338959 Test accuracy: 0.797427652733119 
+Test confusion matrix: 
+[[ 77  21   8]
+ [ 23  36   3]
+ [  4   4 135]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.74      0.73      0.73       106
+      ktvhxh       0.59      0.58      0.59        62
+      quansu       0.92      0.94      0.93       143
+
+    accuracy                           0.80       311
+   macro avg       0.75      0.75      0.75       311
+weighted avg       0.80      0.80      0.80       311
+
+Epoch: 9/150 
+Test loss: 0.48590195178985596 Test accuracy: 0.8070739549839229 
+Test confusion matrix: 
+[[ 68  32   6]
+ [ 11  51   0]
+ [  1  10 132]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.85      0.64      0.73       106
+      ktvhxh       0.55      0.82      0.66        62
+      quansu       0.96      0.92      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.80      0.78       311
+weighted avg       0.84      0.81      0.81       311
+
+Epoch: 10/150 
+Test loss: 0.4591943323612213 Test accuracy: 0.8038585209003215 
+Test confusion matrix: 
+[[ 78  22   6]
+ [ 22  40   0]
+ [  7   4 132]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.73      0.74      0.73       106
+      ktvhxh       0.61      0.65      0.62        62
+      quansu       0.96      0.92      0.94       143
+
+    accuracy                           0.80       311
+   macro avg       0.76      0.77      0.77       311
+weighted avg       0.81      0.80      0.81       311
+
+Epoch: 10/150 
+Test loss: 0.4532920718193054 Test accuracy: 0.7909967845659164 
+Test confusion matrix: 
+[[ 74  20  12]
+ [ 21  35   6]
+ [  3   3 137]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.76      0.70      0.73       106
+      ktvhxh       0.60      0.56      0.58        62
+      quansu       0.88      0.96      0.92       143
+
+    accuracy                           0.79       311
+   macro avg       0.75      0.74      0.74       311
+weighted avg       0.78      0.79      0.79       311
+
+Epoch: 10/150 
+Test loss: 0.4911285638809204 Test accuracy: 0.7942122186495176 
+Test confusion matrix: 
+[[ 69  30   7]
+ [ 12  50   0]
+ [  1  14 128]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.84      0.65      0.73       106
+      ktvhxh       0.53      0.81      0.64        62
+      quansu       0.95      0.90      0.92       143
+
+    accuracy                           0.79       311
+   macro avg       0.77      0.78      0.77       311
+weighted avg       0.83      0.79      0.80       311
+
+Epoch: 10/150 
+Test loss: 0.5419022440910339 Test accuracy: 0.7684887459807074 
+Test confusion matrix: 
+[[101   0   5]
+ [ 56   6   0]
+ [ 11   0 132]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.60      0.95      0.74       106
+      ktvhxh       1.00      0.10      0.18        62
+      quansu       0.96      0.92      0.94       143
+
+    accuracy                           0.77       311
+   macro avg       0.85      0.66      0.62       311
+weighted avg       0.85      0.77      0.72       311
+
+Epoch: 10/150 
+Test loss: 0.6146676540374756 Test accuracy: 0.7427652733118971 
+Test confusion matrix: 
+[[ 50  31  25]
+ [  7  40  15]
+ [  0   2 141]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.88      0.47      0.61       106
+      ktvhxh       0.55      0.65      0.59        62
+      quansu       0.78      0.99      0.87       143
+
+    accuracy                           0.74       311
+   macro avg       0.73      0.70      0.69       311
+weighted avg       0.77      0.74      0.73       311
+
+Epoch: 11/150 
+Test loss: 0.5051080584526062 Test accuracy: 0.7877813504823151 
+Test confusion matrix: 
+[[ 57  37  12]
+ [  9  51   2]
+ [  0   6 137]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.86      0.54      0.66       106
+      ktvhxh       0.54      0.82      0.65        62
+      quansu       0.91      0.96      0.93       143
+
+    accuracy                           0.79       311
+   macro avg       0.77      0.77      0.75       311
+weighted avg       0.82      0.79      0.78       311
+
+Epoch: 11/150 
+Test loss: 0.5919581055641174 Test accuracy: 0.752411575562701 
+Test confusion matrix: 
+[[ 58  20  28]
+ [ 13  34  15]
+ [  0   1 142]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.82      0.55      0.66       106
+      ktvhxh       0.62      0.55      0.58        62
+      quansu       0.77      0.99      0.87       143
+
+    accuracy                           0.75       311
+   macro avg       0.73      0.70      0.70       311
+weighted avg       0.75      0.75      0.74       311
+
+Epoch: 11/150 
+Test loss: 0.6175600290298462 Test accuracy: 0.7363344051446945 
+Test confusion matrix: 
+[[101   5   0]
+ [ 45  17   0]
+ [ 23   9 111]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.60      0.95      0.73       106
+      ktvhxh       0.55      0.27      0.37        62
+      quansu       1.00      0.78      0.87       143
+
+    accuracy                           0.74       311
+   macro avg       0.72      0.67      0.66       311
+weighted avg       0.77      0.74      0.73       311
+
+Epoch: 11/150 
+Test loss: 0.6285820603370667 Test accuracy: 0.7234726688102894 
+Test confusion matrix: 
+[[ 38  46  22]
+ [  1  46  15]
+ [  0   2 141]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.97      0.36      0.52       106
+      ktvhxh       0.49      0.74      0.59        62
+      quansu       0.79      0.99      0.88       143
+
+    accuracy                           0.72       311
+   macro avg       0.75      0.70      0.66       311
+weighted avg       0.79      0.72      0.70       311
+
+Epoch: 11/150 
+Test loss: 0.5022792816162109 Test accuracy: 0.7684887459807074 
+Test confusion matrix: 
+[[ 97   4   5]
+ [ 47  15   0]
+ [ 14   2 127]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.61      0.92      0.73       106
+      ktvhxh       0.71      0.24      0.36        62
+      quansu       0.96      0.89      0.92       143
+
+    accuracy                           0.77       311
+   macro avg       0.76      0.68      0.67       311
+weighted avg       0.79      0.77      0.75       311
+
+Epoch: 12/150 
+Test loss: 0.5097096562385559 Test accuracy: 0.7684887459807074 
+Test confusion matrix: 
+[[ 97   5   4]
+ [ 47  15   0]
+ [ 13   3 127]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.62      0.92      0.74       106
+      ktvhxh       0.65      0.24      0.35        62
+      quansu       0.97      0.89      0.93       143
+
+    accuracy                           0.77       311
+   macro avg       0.75      0.68      0.67       311
+weighted avg       0.79      0.77      0.75       311
+
+Epoch: 12/150 
+Test loss: 0.46453166007995605 Test accuracy: 0.797427652733119 
+Test confusion matrix: 
+[[ 62  33  11]
+ [ 11  48   3]
+ [  1   4 138]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.84      0.58      0.69       106
+      ktvhxh       0.56      0.77      0.65        62
+      quansu       0.91      0.97      0.94       143
+
+    accuracy                           0.80       311
+   macro avg       0.77      0.77      0.76       311
+weighted avg       0.82      0.80      0.80       311
+
+Epoch: 12/150 
+Test loss: 0.4305466413497925 Test accuracy: 0.7942122186495176 
+Test confusion matrix: 
+[[ 73  22  11]
+ [ 21  39   2]
+ [  6   2 135]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.73      0.69      0.71       106
+      ktvhxh       0.62      0.63      0.62        62
+      quansu       0.91      0.94      0.93       143
+
+    accuracy                           0.79       311
+   macro avg       0.75      0.75      0.75       311
+weighted avg       0.79      0.79      0.79       311
+
+Epoch: 12/150 
+Test loss: 0.44415482878685 Test accuracy: 0.797427652733119 
+Test confusion matrix: 
+[[ 86   9  11]
+ [ 34  26   2]
+ [  6   1 136]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.68      0.81      0.74       106
+      ktvhxh       0.72      0.42      0.53        62
+      quansu       0.91      0.95      0.93       143
+
+    accuracy                           0.80       311
+   macro avg       0.77      0.73      0.73       311
+weighted avg       0.80      0.80      0.79       311
+
+Epoch: 12/150 
+Test loss: 0.442766010761261 Test accuracy: 0.7781350482315113 
+Test confusion matrix: 
+[[ 76  20  10]
+ [ 24  38   0]
+ [  7   8 128]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.71      0.72      0.71       106
+      ktvhxh       0.58      0.61      0.59        62
+      quansu       0.93      0.90      0.91       143
+
+    accuracy                           0.78       311
+   macro avg       0.74      0.74      0.74       311
+weighted avg       0.78      0.78      0.78       311
+
+Epoch: 13/150 
+Test loss: 0.42351558804512024 Test accuracy: 0.797427652733119 
+Test confusion matrix: 
+[[ 76  20  10]
+ [ 25  37   0]
+ [  6   2 135]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.71      0.72      0.71       106
+      ktvhxh       0.63      0.60      0.61        62
+      quansu       0.93      0.94      0.94       143
+
+    accuracy                           0.80       311
+   macro avg       0.76      0.75      0.75       311
+weighted avg       0.80      0.80      0.80       311
+
+Epoch: 13/150 
+Test loss: 0.43543657660484314 Test accuracy: 0.7942122186495176 
+Test confusion matrix: 
+[[ 74  23   9]
+ [ 21  40   1]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.73      0.70      0.71       106
+      ktvhxh       0.60      0.65      0.62        62
+      quansu       0.93      0.93      0.93       143
+
+    accuracy                           0.79       311
+   macro avg       0.75      0.76      0.76       311
+weighted avg       0.80      0.79      0.79       311
+
+Epoch: 13/150 
+Test loss: 0.45942166447639465 Test accuracy: 0.7942122186495176 
+Test confusion matrix: 
+[[ 72  20  14]
+ [ 21  37   4]
+ [  2   3 138]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.76      0.68      0.72       106
+      ktvhxh       0.62      0.60      0.61        62
+      quansu       0.88      0.97      0.92       143
+
+    accuracy                           0.79       311
+   macro avg       0.75      0.75      0.75       311
+weighted avg       0.79      0.79      0.79       311
+
+Epoch: 13/150 
+Test loss: 0.4268855154514313 Test accuracy: 0.8038585209003215 
+Test confusion matrix: 
+[[ 77  18  11]
+ [ 24  37   1]
+ [  4   3 136]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.73      0.73      0.73       106
+      ktvhxh       0.64      0.60      0.62        62
+      quansu       0.92      0.95      0.93       143
+
+    accuracy                           0.80       311
+   macro avg       0.76      0.76      0.76       311
+weighted avg       0.80      0.80      0.80       311
+
+Epoch: 13/150 
+Test loss: 0.5629243850708008 Test accuracy: 0.7781350482315113 
+Test confusion matrix: 
+[[ 65  35   6]
+ [  9  53   0]
+ [  2  17 124]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.86      0.61      0.71       106
+      ktvhxh       0.50      0.85      0.63        62
+      quansu       0.95      0.87      0.91       143
+
+    accuracy                           0.78       311
+   macro avg       0.77      0.78      0.75       311
+weighted avg       0.83      0.78      0.79       311
+
+Epoch: 14/150 
+Test loss: 0.5468190908432007 Test accuracy: 0.7909967845659164 
+Test confusion matrix: 
+[[ 65  35   6]
+ [  7  55   0]
+ [  2  15 126]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.88      0.61      0.72       106
+      ktvhxh       0.52      0.89      0.66        62
+      quansu       0.95      0.88      0.92       143
+
+    accuracy                           0.79       311
+   macro avg       0.79      0.79      0.77       311
+weighted avg       0.84      0.79      0.80       311
+
+Epoch: 14/150 
+Test loss: 0.4614918828010559 Test accuracy: 0.8070739549839229 
+Test confusion matrix: 
+[[ 91   5  10]
+ [ 36  22   4]
+ [  5   0 138]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.69      0.86      0.76       106
+      ktvhxh       0.81      0.35      0.49        62
+      quansu       0.91      0.97      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.80      0.73      0.73       311
+weighted avg       0.81      0.81      0.79       311
+
+Epoch: 14/150 
+Test loss: 0.6406495571136475 Test accuracy: 0.7684887459807074 
+Test confusion matrix: 
+[[ 49  51   6]
+ [  0  62   0]
+ [  0  15 128]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       1.00      0.46      0.63       106
+      ktvhxh       0.48      1.00      0.65        62
+      quansu       0.96      0.90      0.92       143
+
+    accuracy                           0.77       311
+   macro avg       0.81      0.79      0.74       311
+weighted avg       0.88      0.77      0.77       311
+
+Epoch: 14/150 
+Test loss: 0.5555933117866516 Test accuracy: 0.7781350482315113 
+Test confusion matrix: 
+[[ 90   2  14]
+ [ 45  13   4]
+ [  4   0 139]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.65      0.85      0.73       106
+      ktvhxh       0.87      0.21      0.34        62
+      quansu       0.89      0.97      0.93       143
+
+    accuracy                           0.78       311
+   macro avg       0.80      0.68      0.67       311
+weighted avg       0.80      0.78      0.74       311
+
+Epoch: 14/150 
+Test loss: 0.49943163990974426 Test accuracy: 0.7909967845659164 
+Test confusion matrix: 
+[[ 78  24   4]
+ [ 18  44   0]
+ [  6  13 124]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.76      0.74      0.75       106
+      ktvhxh       0.54      0.71      0.62        62
+      quansu       0.97      0.87      0.92       143
+
+    accuracy                           0.79       311
+   macro avg       0.76      0.77      0.76       311
+weighted avg       0.81      0.79      0.80       311
+
+Epoch: 15/150 
+Test loss: 0.5650522708892822 Test accuracy: 0.7652733118971061 
+Test confusion matrix: 
+[[ 79  24   3]
+ [ 18  44   0]
+ [  7  21 115]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.76      0.75      0.75       106
+      ktvhxh       0.49      0.71      0.58        62
+      quansu       0.97      0.80      0.88       143
+
+    accuracy                           0.77       311
+   macro avg       0.74      0.75      0.74       311
+weighted avg       0.81      0.77      0.78       311
+
+Epoch: 15/150 
+Test loss: 0.43780288100242615 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 82  11  13]
+ [ 26  32   4]
+ [  2   2 139]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.75      0.77      0.76       106
+      ktvhxh       0.71      0.52      0.60        62
+      quansu       0.89      0.97      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.75      0.76       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 15/150 
+Test loss: 0.41463392972946167 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 80  18   8]
+ [ 22  40   0]
+ [  4   5 134]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.75      0.75      0.75       106
+      ktvhxh       0.63      0.65      0.64        62
+      quansu       0.94      0.94      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.78      0.78      0.78       311
+weighted avg       0.82      0.82      0.82       311
+
+Epoch: 15/150 
+Test loss: 0.4212346076965332 Test accuracy: 0.8231511254019293 
+Test confusion matrix: 
+[[ 78  20   8]
+ [ 17  45   0]
+ [  3   7 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.80      0.74      0.76       106
+      ktvhxh       0.62      0.73      0.67        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.79      0.80      0.79       311
+weighted avg       0.83      0.82      0.83       311
+
+Epoch: 15/150 
+Test loss: 0.428993284702301 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 88   8  10]
+ [ 33  27   2]
+ [  5   0 138]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.70      0.83      0.76       106
+      ktvhxh       0.77      0.44      0.56        62
+      quansu       0.92      0.97      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.80      0.74      0.75       311
+weighted avg       0.81      0.81      0.80       311
+
+Epoch: 16/150 
+Test loss: 0.4304877817630768 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 86  10  10]
+ [ 29  29   4]
+ [  4   1 138]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.81      0.76       106
+      ktvhxh       0.72      0.47      0.57        62
+      quansu       0.91      0.97      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.79      0.75      0.76       311
+weighted avg       0.81      0.81      0.80       311
+
+Epoch: 16/150 
+Test loss: 0.49535322189331055 Test accuracy: 0.8102893890675241 
+Test confusion matrix: 
+[[ 69  33   4]
+ [  9  53   0]
+ [  2  11 130]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.86      0.65      0.74       106
+      ktvhxh       0.55      0.85      0.67        62
+      quansu       0.97      0.91      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.79      0.80      0.78       311
+weighted avg       0.85      0.81      0.82       311
+
+Epoch: 16/150 
+Test loss: 0.4349546730518341 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 88  11   7]
+ [ 29  33   0]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.83      0.77       106
+      ktvhxh       0.69      0.53      0.60        62
+      quansu       0.95      0.93      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.78      0.76      0.77       311
+weighted avg       0.82      0.82      0.81       311
+
+Epoch: 16/150 
+Test loss: 0.5290114283561707 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 65  21  20]
+ [  9  47   6]
+ [  0   2 141]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.88      0.61      0.72       106
+      ktvhxh       0.67      0.76      0.71        62
+      quansu       0.84      0.99      0.91       143
+
+    accuracy                           0.81       311
+   macro avg       0.80      0.79      0.78       311
+weighted avg       0.82      0.81      0.81       311
+
+Epoch: 16/150 
+Test loss: 0.488280713558197 Test accuracy: 0.8038585209003215 
+Test confusion matrix: 
+[[ 91  11   4]
+ [ 29  33   0]
+ [ 11   6 126]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.69      0.86      0.77       106
+      ktvhxh       0.66      0.53      0.59        62
+      quansu       0.97      0.88      0.92       143
+
+    accuracy                           0.80       311
+   macro avg       0.77      0.76      0.76       311
+weighted avg       0.81      0.80      0.80       311
+
+Epoch: 17/150 
+Test loss: 0.45997294783592224 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 89  13   4]
+ [ 29  33   0]
+ [  8   4 131]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.71      0.84      0.77       106
+      ktvhxh       0.66      0.53      0.59        62
+      quansu       0.97      0.92      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.76      0.77       311
+weighted avg       0.82      0.81      0.81       311
+
+Epoch: 17/150 
+Test loss: 0.493677020072937 Test accuracy: 0.8231511254019293 
+Test confusion matrix: 
+[[ 67  26  13]
+ [ 11  50   1]
+ [  0   4 139]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.86      0.63      0.73       106
+      ktvhxh       0.62      0.81      0.70        62
+      quansu       0.91      0.97      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.80      0.80      0.79       311
+weighted avg       0.84      0.82      0.82       311
+
+Epoch: 17/150 
+Test loss: 0.44687533378601074 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 88  10   8]
+ [ 29  33   0]
+ [  7   3 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.71      0.83      0.77       106
+      ktvhxh       0.72      0.53      0.61        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.79      0.76      0.77       311
+weighted avg       0.82      0.82      0.81       311
+
+Epoch: 17/150 
+Test loss: 0.582147479057312 Test accuracy: 0.8038585209003215 
+Test confusion matrix: 
+[[ 60  25  21]
+ [  7  49   6]
+ [  0   2 141]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.90      0.57      0.69       106
+      ktvhxh       0.64      0.79      0.71        62
+      quansu       0.84      0.99      0.91       143
+
+    accuracy                           0.80       311
+   macro avg       0.79      0.78      0.77       311
+weighted avg       0.82      0.80      0.79       311
+
+Epoch: 17/150 
+Test loss: 0.5658969283103943 Test accuracy: 0.7813504823151125 
+Test confusion matrix: 
+[[ 94  12   0]
+ [ 30  32   0]
+ [ 16  10 117]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.67      0.89      0.76       106
+      ktvhxh       0.59      0.52      0.55        62
+      quansu       1.00      0.82      0.90       143
+
+    accuracy                           0.78       311
+   macro avg       0.75      0.74      0.74       311
+weighted avg       0.81      0.78      0.78       311
+
+Epoch: 18/150 
+Test loss: 0.4815411865711212 Test accuracy: 0.8070739549839229 
+Test confusion matrix: 
+[[ 91  11   4]
+ [ 31  31   0]
+ [ 10   4 129]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.69      0.86      0.76       106
+      ktvhxh       0.67      0.50      0.57        62
+      quansu       0.97      0.90      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.75      0.76       311
+weighted avg       0.82      0.81      0.80       311
+
+Epoch: 18/150 
+Test loss: 0.5076344013214111 Test accuracy: 0.8006430868167203 
+Test confusion matrix: 
+[[ 74  12  20]
+ [ 20  34   8]
+ [  0   2 141]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.79      0.70      0.74       106
+      ktvhxh       0.71      0.55      0.62        62
+      quansu       0.83      0.99      0.90       143
+
+    accuracy                           0.80       311
+   macro avg       0.78      0.74      0.75       311
+weighted avg       0.79      0.80      0.79       311
+
+Epoch: 18/150 
+Test loss: 0.5003496408462524 Test accuracy: 0.7909967845659164 
+Test confusion matrix: 
+[[ 74  26   6]
+ [ 14  48   0]
+ [  4  15 124]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.80      0.70      0.75       106
+      ktvhxh       0.54      0.77      0.64        62
+      quansu       0.95      0.87      0.91       143
+
+    accuracy                           0.79       311
+   macro avg       0.77      0.78      0.76       311
+weighted avg       0.82      0.79      0.80       311
+
+Epoch: 18/150 
+Test loss: 0.42556822299957275 Test accuracy: 0.8327974276527331 
+Test confusion matrix: 
+[[ 82  12  12]
+ [ 23  37   2]
+ [  1   2 140]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.77      0.77      0.77       106
+      ktvhxh       0.73      0.60      0.65        62
+      quansu       0.91      0.98      0.94       143
+
+    accuracy                           0.83       311
+   macro avg       0.80      0.78      0.79       311
+weighted avg       0.83      0.83      0.83       311
+
+Epoch: 18/150 
+Test loss: 0.43384087085723877 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 77  21   8]
+ [ 19  43   0]
+ [  4   6 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.77      0.73      0.75       106
+      ktvhxh       0.61      0.69      0.65        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.78      0.78       311
+weighted avg       0.82      0.81      0.82       311
+
+Epoch: 19/150 
+Test loss: 0.45564180612564087 Test accuracy: 0.797427652733119 
+Test confusion matrix: 
+[[ 73  25   8]
+ [ 15  47   0]
+ [  6   9 128]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.78      0.69      0.73       106
+      ktvhxh       0.58      0.76      0.66        62
+      quansu       0.94      0.90      0.92       143
+
+    accuracy                           0.80       311
+   macro avg       0.77      0.78      0.77       311
+weighted avg       0.81      0.80      0.80       311
+
+Epoch: 19/150 
+Test loss: 0.4314231872558594 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 87  10   9]
+ [ 28  34   0]
+ [  7   3 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.71      0.82      0.76       106
+      ktvhxh       0.72      0.55      0.62        62
+      quansu       0.94      0.93      0.93       143
+
+    accuracy                           0.82       311
+   macro avg       0.79      0.77      0.77       311
+weighted avg       0.82      0.82      0.81       311
+
+Epoch: 19/150 
+Test loss: 0.42600172758102417 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 77  20   9]
+ [ 22  40   0]
+ [  3   4 136]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.75      0.73      0.74       106
+      ktvhxh       0.62      0.65      0.63        62
+      quansu       0.94      0.95      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.77      0.77      0.77       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 19/150 
+Test loss: 0.4762391746044159 Test accuracy: 0.8327974276527331 
+Test confusion matrix: 
+[[ 70  27   9]
+ [  9  53   0]
+ [  1   6 136]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.88      0.66      0.75       106
+      ktvhxh       0.62      0.85      0.72        62
+      quansu       0.94      0.95      0.94       143
+
+    accuracy                           0.83       311
+   macro avg       0.81      0.82      0.80       311
+weighted avg       0.85      0.83      0.83       311
+
+Epoch: 19/150 
+Test loss: 0.48091748356819153 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 90   6  10]
+ [ 34  27   1]
+ [  6   0 137]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.69      0.85      0.76       106
+      ktvhxh       0.82      0.44      0.57        62
+      quansu       0.93      0.96      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.81      0.75      0.76       311
+weighted avg       0.82      0.82      0.81       311
+
+Epoch: 20/150 
+Test loss: 0.45355746150016785 Test accuracy: 0.8231511254019293 
+Test confusion matrix: 
+[[ 88   8  10]
+ [ 31  31   0]
+ [  6   0 137]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.70      0.83      0.76       106
+      ktvhxh       0.79      0.50      0.61        62
+      quansu       0.93      0.96      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.81      0.76      0.77       311
+weighted avg       0.83      0.82      0.82       311
+
+Epoch: 20/150 
+Test loss: 0.5136436223983765 Test accuracy: 0.8038585209003215 
+Test confusion matrix: 
+[[ 70  29   7]
+ [ 10  52   0]
+ [  3  12 128]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.84      0.66      0.74       106
+      ktvhxh       0.56      0.84      0.67        62
+      quansu       0.95      0.90      0.92       143
+
+    accuracy                           0.80       311
+   macro avg       0.78      0.80      0.78       311
+weighted avg       0.83      0.80      0.81       311
+
+Epoch: 20/150 
+Test loss: 0.4953819811344147 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 90   7   9]
+ [ 33  28   1]
+ [  7   0 136]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.69      0.85      0.76       106
+      ktvhxh       0.80      0.45      0.58        62
+      quansu       0.93      0.95      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.81      0.75      0.76       311
+weighted avg       0.82      0.82      0.81       311
+
+Epoch: 20/150 
+Test loss: 0.6009883880615234 Test accuracy: 0.7909967845659164 
+Test confusion matrix: 
+[[ 61  37   8]
+ [  5  56   1]
+ [  2  12 129]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.90      0.58      0.70       106
+      ktvhxh       0.53      0.90      0.67        62
+      quansu       0.93      0.90      0.92       143
+
+    accuracy                           0.79       311
+   macro avg       0.79      0.79      0.76       311
+weighted avg       0.84      0.79      0.79       311
+
+Epoch: 20/150 
+Test loss: 0.4825649857521057 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 86   9  11]
+ [ 28  34   0]
+ [  6   3 134]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.81      0.76       106
+      ktvhxh       0.74      0.55      0.63        62
+      quansu       0.92      0.94      0.93       143
+
+    accuracy                           0.82       311
+   macro avg       0.79      0.77      0.77       311
+weighted avg       0.82      0.82      0.81       311
+
+Epoch: 21/150 
+Test loss: 0.5258837342262268 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 75  15  16]
+ [ 19  38   5]
+ [  1   2 140]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.79      0.71      0.75       106
+      ktvhxh       0.69      0.61      0.65        62
+      quansu       0.87      0.98      0.92       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.77      0.77       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 21/150 
+Test loss: 0.5279428958892822 Test accuracy: 0.8102893890675241 
+Test confusion matrix: 
+[[ 72  27   7]
+ [ 13  49   0]
+ [  2  10 131]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.83      0.68      0.75       106
+      ktvhxh       0.57      0.79      0.66        62
+      quansu       0.95      0.92      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.80      0.78       311
+weighted avg       0.83      0.81      0.82       311
+
+Epoch: 21/150 
+Test loss: 0.5389277935028076 Test accuracy: 0.8263665594855305 
+Test confusion matrix: 
+[[ 92  11   3]
+ [ 28  34   0]
+ [  7   5 131]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.87      0.79       106
+      ktvhxh       0.68      0.55      0.61        62
+      quansu       0.98      0.92      0.95       143
+
+    accuracy                           0.83       311
+   macro avg       0.79      0.78      0.78       311
+weighted avg       0.83      0.83      0.83       311
+
+Epoch: 21/150 
+Test loss: 0.4986565411090851 Test accuracy: 0.8102893890675241 
+Test confusion matrix: 
+[[ 76  19  11]
+ [ 21  41   0]
+ [  4   4 135]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.75      0.72      0.73       106
+      ktvhxh       0.64      0.66      0.65        62
+      quansu       0.92      0.94      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.77      0.77      0.77       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 21/150 
+Test loss: 0.513920247554779 Test accuracy: 0.8006430868167203 
+Test confusion matrix: 
+[[ 73  23  10]
+ [ 20  42   0]
+ [  4   5 134]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.75      0.69      0.72       106
+      ktvhxh       0.60      0.68      0.64        62
+      quansu       0.93      0.94      0.93       143
+
+    accuracy                           0.80       311
+   macro avg       0.76      0.77      0.76       311
+weighted avg       0.80      0.80      0.80       311
+
+Epoch: 22/150 
+Test loss: 0.6012163758277893 Test accuracy: 0.8070739549839229 
+Test confusion matrix: 
+[[ 62  31  13]
+ [  8  54   0]
+ [  1   7 135]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.87      0.58      0.70       106
+      ktvhxh       0.59      0.87      0.70        62
+      quansu       0.91      0.94      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.79      0.80      0.78       311
+weighted avg       0.83      0.81      0.81       311
+
+Epoch: 22/150 
+Test loss: 0.5962933301925659 Test accuracy: 0.8006430868167203 
+Test confusion matrix: 
+[[ 95   7   4]
+ [ 39  23   0]
+ [  9   3 131]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.66      0.90      0.76       106
+      ktvhxh       0.70      0.37      0.48        62
+      quansu       0.97      0.92      0.94       143
+
+    accuracy                           0.80       311
+   macro avg       0.78      0.73      0.73       311
+weighted avg       0.81      0.80      0.79       311
+
+Epoch: 22/150 
+Test loss: 0.5009288191795349 Test accuracy: 0.8038585209003215 
+Test confusion matrix: 
+[[ 73  21  12]
+ [ 21  41   0]
+ [  4   3 136]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.74      0.69      0.72       106
+      ktvhxh       0.63      0.66      0.65        62
+      quansu       0.92      0.95      0.93       143
+
+    accuracy                           0.80       311
+   macro avg       0.76      0.77      0.77       311
+weighted avg       0.80      0.80      0.80       311
+
+Epoch: 22/150 
+Test loss: 0.5020958781242371 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 86  12   8]
+ [ 27  35   0]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.81      0.76       106
+      ktvhxh       0.69      0.56      0.62        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.78      0.77      0.77       311
+weighted avg       0.82      0.82      0.81       311
+
+Epoch: 22/150 
+Test loss: 0.5423924922943115 Test accuracy: 0.8102893890675241 
+Test confusion matrix: 
+[[ 67  31   8]
+ [ 10  52   0]
+ [  2   8 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.85      0.63      0.72       106
+      ktvhxh       0.57      0.84      0.68        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.79      0.80      0.78       311
+weighted avg       0.84      0.81      0.81       311
+
+Epoch: 23/150 
+Test loss: 0.4984457492828369 Test accuracy: 0.8102893890675241 
+Test confusion matrix: 
+[[ 84  15   7]
+ [ 27  35   0]
+ [  5   5 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.79      0.76       106
+      ktvhxh       0.64      0.56      0.60        62
+      quansu       0.95      0.93      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.77      0.76      0.76       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 23/150 
+Test loss: 0.468840628862381 Test accuracy: 0.8102893890675241 
+Test confusion matrix: 
+[[ 81  17   8]
+ [ 24  38   0]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.73      0.76      0.75       106
+      ktvhxh       0.64      0.61      0.63        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.77      0.77      0.77       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 23/150 
+Test loss: 0.47344961762428284 Test accuracy: 0.8038585209003215 
+Test confusion matrix: 
+[[ 80  18   8]
+ [ 25  37   0]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.75      0.74       106
+      ktvhxh       0.63      0.60      0.61        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.80       311
+   macro avg       0.76      0.76      0.76       311
+weighted avg       0.80      0.80      0.80       311
+
+Epoch: 23/150 
+Test loss: 0.48710015416145325 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 85  12   9]
+ [ 27  35   0]
+ [  7   3 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.71      0.80      0.76       106
+      ktvhxh       0.70      0.56      0.62        62
+      quansu       0.94      0.93      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.77      0.77       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 23/150 
+Test loss: 0.5163883566856384 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 76  21   9]
+ [ 16  44   2]
+ [  5   5 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.78      0.72      0.75       106
+      ktvhxh       0.63      0.71      0.67        62
+      quansu       0.92      0.93      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.79      0.78       311
+weighted avg       0.82      0.81      0.81       311
+
+Epoch: 24/150 
+Test loss: 0.5020982623100281 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 82  15   9]
+ [ 24  38   0]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.73      0.77      0.75       106
+      ktvhxh       0.67      0.61      0.64        62
+      quansu       0.94      0.93      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.77      0.77       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 24/150 
+Test loss: 0.5186052918434143 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 82  15   9]
+ [ 22  38   2]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.75      0.77      0.76       106
+      ktvhxh       0.67      0.61      0.64        62
+      quansu       0.92      0.93      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.77      0.77       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 24/150 
+Test loss: 0.566582441329956 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 75  24   7]
+ [ 14  46   2]
+ [  5   5 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.80      0.71      0.75       106
+      ktvhxh       0.61      0.74      0.67        62
+      quansu       0.94      0.93      0.93       143
+
+    accuracy                           0.82       311
+   macro avg       0.78      0.79      0.78       311
+weighted avg       0.82      0.82      0.82       311
+
+Epoch: 24/150 
+Test loss: 0.584987223148346 Test accuracy: 0.819935691318328 
+Test confusion matrix: 
+[[ 89  12   5]
+ [ 29  33   0]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.84      0.77       106
+      ktvhxh       0.67      0.53      0.59        62
+      quansu       0.96      0.93      0.95       143
+
+    accuracy                           0.82       311
+   macro avg       0.78      0.77      0.77       311
+weighted avg       0.82      0.82      0.82       311
+
+Epoch: 24/150 
+Test loss: 0.5459402203559875 Test accuracy: 0.8263665594855305 
+Test confusion matrix: 
+[[ 81  16   9]
+ [ 18  42   2]
+ [  5   4 134]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.78      0.76      0.77       106
+      ktvhxh       0.68      0.68      0.68        62
+      quansu       0.92      0.94      0.93       143
+
+    accuracy                           0.83       311
+   macro avg       0.79      0.79      0.79       311
+weighted avg       0.83      0.83      0.83       311
+
+Epoch: 25/150 
+Test loss: 0.5613895654678345 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 74  22  10]
+ [ 13  46   3]
+ [  5   5 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.80      0.70      0.75       106
+      ktvhxh       0.63      0.74      0.68        62
+      quansu       0.91      0.93      0.92       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.79      0.78       311
+weighted avg       0.82      0.81      0.81       311
+
+Epoch: 25/150 
+Test loss: 0.5890448093414307 Test accuracy: 0.819935691318328 
+Test confusion matrix: 
+[[ 89  11   6]
+ [ 29  33   0]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.72      0.84      0.77       106
+      ktvhxh       0.69      0.53      0.60        62
+      quansu       0.96      0.93      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.79      0.77      0.77       311
+weighted avg       0.82      0.82      0.82       311
+
+Epoch: 25/150 
+Test loss: 0.5771726965904236 Test accuracy: 0.8263665594855305 
+Test confusion matrix: 
+[[ 80  19   7]
+ [ 17  44   1]
+ [  5   5 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.78      0.75      0.77       106
+      ktvhxh       0.65      0.71      0.68        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.83       311
+   macro avg       0.79      0.80      0.79       311
+weighted avg       0.83      0.83      0.83       311
+
+Epoch: 25/150 
+Test loss: 0.607650876045227 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 89   8   9]
+ [ 31  30   1]
+ [  7   2 134]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.70      0.84      0.76       106
+      ktvhxh       0.75      0.48      0.59        62
+      quansu       0.93      0.94      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.79      0.75      0.76       311
+weighted avg       0.82      0.81      0.81       311
+
+Epoch: 25/150 
+Test loss: 0.6036145091056824 Test accuracy: 0.8263665594855305 
+Test confusion matrix: 
+[[ 78  21   7]
+ [ 15  46   1]
+ [  5   5 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.80      0.74      0.76       106
+      ktvhxh       0.64      0.74      0.69        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.83       311
+   macro avg       0.79      0.80      0.80       311
+weighted avg       0.83      0.83      0.83       311
+
+Epoch: 26/150 
+Test loss: 0.6078174710273743 Test accuracy: 0.8327974276527331 
+Test confusion matrix: 
+[[ 80  19   7]
+ [ 15  46   1]
+ [  5   5 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.80      0.75      0.78       106
+      ktvhxh       0.66      0.74      0.70        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.83       311
+   macro avg       0.80      0.81      0.80       311
+weighted avg       0.84      0.83      0.83       311
+
+Epoch: 26/150 
+Test loss: 0.6697596311569214 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 91   9   6]
+ [ 33  29   0]
+ [  7   3 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.69      0.86      0.77       106
+      ktvhxh       0.71      0.47      0.56        62
+      quansu       0.96      0.93      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.79      0.75      0.76       311
+weighted avg       0.82      0.81      0.81       311
+
+Epoch: 26/150 
+Test loss: 0.6190893054008484 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 82  16   8]
+ [ 23  38   1]
+ [  5   5 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.75      0.77      0.76       106
+      ktvhxh       0.64      0.61      0.63        62
+      quansu       0.94      0.93      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.77      0.77       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 26/150 
+Test loss: 0.6651510000228882 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 76  23   7]
+ [ 14  47   1]
+ [  4   9 130]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.81      0.72      0.76       106
+      ktvhxh       0.59      0.76      0.67        62
+      quansu       0.94      0.91      0.93       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.79      0.78       311
+weighted avg       0.83      0.81      0.82       311
+
+Epoch: 26/150 
+Test loss: 0.6440006494522095 Test accuracy: 0.8263665594855305 
+Test confusion matrix: 
+[[ 85  14   7]
+ [ 23  39   0]
+ [  5   5 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.75      0.80      0.78       106
+      ktvhxh       0.67      0.63      0.65        62
+      quansu       0.95      0.93      0.94       143
+
+    accuracy                           0.83       311
+   macro avg       0.79      0.79      0.79       311
+weighted avg       0.83      0.83      0.83       311
+
+Epoch: 27/150 
+Test loss: 0.6641860604286194 Test accuracy: 0.8135048231511254 
+Test confusion matrix: 
+[[ 87  13   6]
+ [ 29  33   0]
+ [  6   4 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.71      0.82      0.76       106
+      ktvhxh       0.66      0.53      0.59        62
+      quansu       0.96      0.93      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.78      0.76      0.77       311
+weighted avg       0.81      0.81      0.81       311
+
+Epoch: 27/150 
+Test loss: 0.6585966944694519 Test accuracy: 0.8231511254019293 
+Test confusion matrix: 
+[[ 75  24   7]
+ [ 13  48   1]
+ [  4   6 133]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.82      0.71      0.76       106
+      ktvhxh       0.62      0.77      0.69        62
+      quansu       0.94      0.93      0.94       143
+
+    accuracy                           0.82       311
+   macro avg       0.79      0.80      0.79       311
+weighted avg       0.83      0.82      0.83       311
+
+Epoch: 27/150 
+Test loss: 0.6581698656082153 Test accuracy: 0.8070739549839229 
+Test confusion matrix: 
+[[ 87  12   7]
+ [ 32  30   0]
+ [  7   2 134]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.69      0.82      0.75       106
+      ktvhxh       0.68      0.48      0.57        62
+      quansu       0.95      0.94      0.94       143
+
+    accuracy                           0.81       311
+   macro avg       0.77      0.75      0.75       311
+weighted avg       0.81      0.81      0.80       311
+
+Epoch: 27/150 
+Test loss: 0.7257471680641174 Test accuracy: 0.8070739549839229 
+Test confusion matrix: 
+[[ 82  18   6]
+ [ 19  43   0]
+ [  5  12 126]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.77      0.77      0.77       106
+      ktvhxh       0.59      0.69      0.64        62
+      quansu       0.95      0.88      0.92       143
+
+    accuracy                           0.81       311
+   macro avg       0.77      0.78      0.78       311
+weighted avg       0.82      0.81      0.81       311
+
+Epoch: 27/150 
+Test loss: 0.6811577677726746 Test accuracy: 0.819935691318328 
+Test confusion matrix: 
+[[ 79  14  13]
+ [ 20  38   4]
+ [  3   2 138]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.77      0.75      0.76       106
+      ktvhxh       0.70      0.61      0.66        62
+      quansu       0.89      0.97      0.93       143
+
+    accuracy                           0.82       311
+   macro avg       0.79      0.77      0.78       311
+weighted avg       0.81      0.82      0.82       311
+
+Epoch: 28/150 
+Test loss: 0.6867503523826599 Test accuracy: 0.8263665594855305 
+Test confusion matrix: 
+[[ 78  14  14]
+ [ 16  41   5]
+ [  3   2 138]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.80      0.74      0.77       106
+      ktvhxh       0.72      0.66      0.69        62
+      quansu       0.88      0.97      0.92       143
+
+    accuracy                           0.83       311
+   macro avg       0.80      0.79      0.79       311
+weighted avg       0.82      0.83      0.82       311
+
+Epoch: 28/150 
+Test loss: 0.7042564153671265 Test accuracy: 0.8167202572347267 
+Test confusion matrix: 
+[[ 83  17   6]
+ [ 20  42   0]
+ [  5   9 129]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.77      0.78      0.78       106
+      ktvhxh       0.62      0.68      0.65        62
+      quansu       0.96      0.90      0.93       143
+
+    accuracy                           0.82       311
+   macro avg       0.78      0.79      0.78       311
+weighted avg       0.82      0.82      0.82       311
+
+Epoch: 28/150 
+Test loss: 0.6802767515182495 Test accuracy: 0.8263665594855305 
+Test confusion matrix: 
+[[ 84  13   9]
+ [ 25  36   1]
+ [  5   1 137]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.74      0.79      0.76       106
+      ktvhxh       0.72      0.58      0.64        62
+      quansu       0.93      0.96      0.94       143
+
+    accuracy                           0.83       311
+   macro avg       0.80      0.78      0.78       311
+weighted avg       0.82      0.83      0.82       311
+
+Epoch: 28/150 
+Test loss: 0.7711229920387268 Test accuracy: 0.797427652733119 
+Test confusion matrix: 
+[[ 78  24   4]
+ [ 18  44   0]
+ [  5  12 126]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.77      0.74      0.75       106
+      ktvhxh       0.55      0.71      0.62        62
+      quansu       0.97      0.88      0.92       143
+
+    accuracy                           0.80       311
+   macro avg       0.76      0.78      0.77       311
+weighted avg       0.82      0.80      0.80       311
+
+Epoch: 28/150 
+Test loss: 0.7376508116722107 Test accuracy: 0.8006430868167203 
+Test confusion matrix: 
+[[ 78  18  10]
+ [ 23  37   2]
+ [  5   4 134]]
+ Test F1-Score: 
+              precision    recall  f1-score   support
+
+   chinh_tri       0.74      0.74      0.74       106
+      ktvhxh       0.63      0.60      0.61        62
+      quansu       0.92      0.94      0.93       143
+
+    accuracy                           0.80       311
+   macro avg       0.76      0.76      0.76       311
+weighted avg       0.80      0.80      0.80       311
+
