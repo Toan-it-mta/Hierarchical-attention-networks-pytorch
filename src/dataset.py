@@ -91,38 +91,13 @@ class MyDataset(Dataset):
         return document_encode.astype(np.int64)
 
     def __getitem__(self, index):
-        # label = self.labels[index]
-        # text = self.texts[index]
-        # document_encode = [
-        #     [self.dict.index(word) if word in self.dict else -1 for word in word_tokenize(text=sentences)] for sentences
-        #     in
-        #     sent_tokenize(text=text)]
-
-        # for sentences in document_encode:
-        #     if len(sentences) < self.max_length_word:
-        #         extended_words = [-1 for _ in range(self.max_length_word - len(sentences))]
-        #         sentences.extend(extended_words)
-
-        # if len(document_encode) < self.max_length_sentences:
-        #     extended_sentences = [[-1 for _ in range(self.max_length_word)] for _ in
-        #                           range(self.max_length_sentences - len(document_encode))]
-        #     document_encode.extend(extended_sentences)
-
-        # document_encode = [sentences[:self.max_length_word] for sentences in document_encode][
-        #                   :self.max_length_sentences]
-
-        # document_encode = np.stack(arrays=document_encode, axis=0)
-        # document_encode += 1
-
-        # return document_encode.astype(np.int64), label
-
         label = self.labels[index]
         document_encode = self.documents_encode[index]
         return document_encode,label
 
 
 if __name__ == '__main__':
-    train = MyDataset(data_path="./dataset/plcx/train.csv",
+    train = MyDataset(data_path="./dataset/plcx/new_train.csv",
      dict_path="./models/glove.6B.300d.txt",
      is_processed_data=False)
     test = MyDataset(data_path="./dataset/plcx/test.csv",

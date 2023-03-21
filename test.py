@@ -12,11 +12,14 @@ import shutil
 import csv
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
+import time
+import warnings
+warnings.filterwarnings("ignore") 
 
 def get_args():
     parser = argparse.ArgumentParser(
         """Implementation of the model described in the paper: Hierarchical Attention Networks for Document Classification""")
-    parser.add_argument("--batch_size", type=int, default=128)
+    parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--data_path", type=str, default="./dataset/plcx/test.csv")
     parser.add_argument("--pre_trained_model", type=str, default="./trained_models/plcx/best_model.pt")
     parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.txt")
@@ -43,6 +46,8 @@ def test(opt):
     model.eval()
     te_label_ls = []
     te_pred_ls = []
+    
+    number = 0
     for te_feature, te_label in test_generator:
         num_sample = len(te_label)
         if torch.cuda.is_available():
@@ -53,7 +58,7 @@ def test(opt):
             te_predictions = model(te_feature)
             te_predictions = F.softmax(te_predictions)
         te_label_ls.extend(te_label.clone().cpu())
-        te_pred_ls.append(te_predictions.clone().cpu())
+        te_pred_ls.append(te_predictions.clone().cpu())  
     te_pred = torch.cat(te_pred_ls, 0).numpy()
     te_label = np.array(te_label_ls)
     encoder = LabelEncoder()
