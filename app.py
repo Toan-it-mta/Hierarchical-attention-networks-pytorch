@@ -50,13 +50,15 @@ def show():
     if "classes" in request.files:
         df = pd.read_csv(request.files["classes"], header=None)
         categories = [item[0] for item in df.values]
+        print(categories)
     return render_template("input.html")
 
 
 @app.route("/result", methods=["POST"])
 def result():
     global dictionary, model, max_length_sentences, max_length_word, categories
-    text = request.form["message"]
+    raw_text = request.form["message"]
+    text = raw_text.lower()
     document_encode = [
         [dictionary.index(word) if word in dictionary else -1 for word in word_tokenize(text=sentences)] for sentences
         in sent_tokenize(text=text)]
@@ -92,7 +94,7 @@ def result():
         category = categories[int(max_prob_index[0])]
     else:
         category = int(max_prob_index[0]) + 1
-    return render_template("result.html", text=text, value=prob, index=category)
+    return render_template("result.html", text=raw_text, value=prob, index=category)
 
 
 if __name__ == "__main__":

@@ -77,7 +77,7 @@ def get_max_lengths(data_path):
     return sorted_word_length[int(0.8*len(sorted_word_length))], sorted_sent_length[int(0.8*len(sorted_sent_length))]
 
 if __name__ == "__main__":
-    a,b = get_max_lengths("/home/nguyenphuctoan/Vosint/Hierarchical-attention-networks-pytorch/dataset/plcd/test.csv")
+    a,b = get_max_lengths("/home/nguyenphuctoan/Vosint/Hierarchical-attention-networks-pytorch/dataset/VNTC_csv/test.csv")
     print(a, ' ',b)
 
 
