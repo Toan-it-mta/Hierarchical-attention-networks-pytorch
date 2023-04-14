@@ -12,10 +12,11 @@ import numpy as np
 from tqdm import tqdm
 
 class MyDataset(Dataset):
-    def __init__(self, data_path, dict_path, max_length_sentences=100, max_length_word=50,is_processed_data = False):
+    def __init__(self, data_path, dict_path, max_length_sentences=70, max_length_word=50,is_processed_data = False):
         super(MyDataset, self).__init__()
         self.max_length_sentences = max_length_sentences
         self.max_length_word = max_length_word
+        
         if not is_processed_data:
             texts, labels = [], []
             with open(data_path) as csv_file:
@@ -97,9 +98,9 @@ class MyDataset(Dataset):
 
 
 if __name__ == '__main__':
-    train = MyDataset(data_path="./dataset/plcx/new_train.csv",
-     dict_path="./models/glove.6B.300d.txt",
-     is_processed_data=False)
+    train = MyDataset(data_path="./dataset/plcx/train.csv",
+        dict_path="./models/glove.6B.300d.txt",
+        is_processed_data=False)
     test = MyDataset(data_path="./dataset/plcx/test.csv",
     dict_path="./models/glove.6B.300d.txt",
     is_processed_data=False)

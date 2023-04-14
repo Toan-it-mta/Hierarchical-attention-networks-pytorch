@@ -20,7 +20,7 @@ def get_args():
     parser = argparse.ArgumentParser(
         """Implementation of the model described in the paper: Hierarchical Attention Networks for Document Classification""")
     parser.add_argument("--batch_size", type=int, default=1)
-    parser.add_argument("--data_path", type=str, default="./dataset/plcx/test.csv")
+    parser.add_argument("--data_path", type=str, default="./dataset/plcx/test.npy")
     parser.add_argument("--pre_trained_model", type=str, default="./trained_models/plcx/best_model.pt")
     parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.txt")
     parser.add_argument("--output", type=str, default="predictions/plcx")
@@ -39,7 +39,9 @@ def test(opt):
         model = torch.load(opt.pre_trained_model)
     else:
         model = torch.load(opt.pre_trained_model, map_location=lambda storage, loc: storage)
-    test_set = MyDataset(opt.data_path, opt.word2vec_path, model.max_sent_length, model.max_word_length)
+    # test_set = MyDataset(opt.data_path, opt.word2vec_path, model.max_sent_length, model.max_word_length)
+    # test_generator = DataLoader(test_set, **test_params)
+    test_set = MyDataset(opt.data_path, opt.word2vec_path, model.max_sent_length, model.max_word_length,True)
     test_generator = DataLoader(test_set, **test_params)
     if torch.cuda.is_available():
         model.cuda()

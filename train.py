@@ -24,8 +24,8 @@ def get_args():
     parser.add_argument("--num_epoches", type=int, default=150)
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--momentum", type=float, default=0.9)
-    parser.add_argument("--word_hidden_size", type=int, default=50)
-    parser.add_argument("--sent_hidden_size", type=int, default=50)
+    parser.add_argument("--word_hidden_size", type=int, default=150)
+    parser.add_argument("--sent_hidden_size", type=int, default=150)
     parser.add_argument("--es_min_delta", type=float, default=0.0,
                         help="Early stopping's parameter: minimum change loss to qualify as an improvement")
     parser.add_argument("--es_patience", type=int, default=10,
@@ -55,7 +55,7 @@ def train(opt):
                    "drop_last": False}
 
     # max_word_length, max_sent_length = get_max_lengths(opt.train_set)
-    max_word_length, max_sent_length = 30,35
+    max_word_length, max_sent_length = 50, 70
     print(max_word_length, max_sent_length)
     print("=== Load Train Dataset ===")
     training_set = MyDataset(opt.train_set, opt.word2vec_path, max_sent_length, max_word_length,True)
@@ -63,10 +63,7 @@ def train(opt):
     print("=== Load Test Dataset ===")
     test_set = MyDataset(opt.test_set, opt.word2vec_path, max_sent_length, max_word_length,True)
     test_generator = DataLoader(test_set, **test_params)
-    # test_set = training_set
-    # test_generator = training_generator
     print("=== Init Model ===")
-    # training_set.num_classes = 10
     model = HierAttNet(opt.word_hidden_size, opt.sent_hidden_size, opt.batch_size, training_set.num_classes,
                        opt.word2vec_path, max_sent_length, max_word_length)
 
@@ -77,7 +74,6 @@ def train(opt):
         shutil.rmtree(opt.log_path)
     os.makedirs(opt.log_path)
     writer = SummaryWriter(opt.log_path)
-    # writer.add_graph(model, torch.zeros(opt.batch_size, max_sent_length, max_word_length))
 
     if torch.cuda.is_available():
         model.cuda()
