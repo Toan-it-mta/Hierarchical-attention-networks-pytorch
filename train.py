@@ -12,7 +12,7 @@ from torch.utils.tensorboard import SummaryWriter
 import argparse
 import shutil
 import numpy as np
-from torchsummary import summary
+# from torchsummary import summary
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -30,12 +30,14 @@ def get_args():
                         help="Early stopping's parameter: minimum change loss to qualify as an improvement")
     parser.add_argument("--es_patience", type=int, default=10,
                         help="Early stopping's parameter: number of epochs with no improvement after which training will be stopped. Set to 0 to disable this technique.")
-    parser.add_argument("--train_set", type=str, default="./dataset/plcx/train.npy")
+    parser.add_argument("--train_set", type=str, default="./dataset/plcx/new_train.npy")
     parser.add_argument("--test_set", type=str, default="./dataset/plcx/test.npy")
     parser.add_argument("--test_interval", type=int, default=5, help="Number of epoches between testing phases")
     parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.npy")
     parser.add_argument("--log_path", type=str, default="tensorboard/han_voc")
     parser.add_argument("--saved_path", type=str, default="trained_models/plcx")
+    parser.add_argument("--max_word_length",type=int,default=50)
+    parser.add_argument("--max_sent_length",type=int,default=70)
     args = parser.parse_args()
     return args
 
@@ -55,7 +57,7 @@ def train(opt):
                    "drop_last": False}
 
     # max_word_length, max_sent_length = get_max_lengths(opt.train_set)
-    max_word_length, max_sent_length = 50, 70
+    max_word_length, max_sent_length = opt.max_word_length, opt.max_sent_length
     print(max_word_length, max_sent_length)
     print("=== Load Train Dataset ===")
     training_set = MyDataset(opt.train_set, opt.word2vec_path, max_sent_length, max_word_length,True)
@@ -68,6 +70,7 @@ def train(opt):
                        opt.word2vec_path, max_sent_length, max_word_length)
 
     print(model)
+    pass
     print("=== Init Model  Done ===")
 
     if os.path.isdir(opt.log_path):
@@ -109,8 +112,8 @@ def train(opt):
                 loss, training_metrics["accuracy"]))
             writer.add_scalar('Train/Loss', loss, epoch * num_iter_per_epoch + iter)
             writer.add_scalar('Train/Accuracy', training_metrics["accuracy"], epoch * num_iter_per_epoch + iter)
+
             if iter % opt.test_interval == 0:
-        # if epoch % opt.test_interval == 0:
                 model.eval()
                 loss_ls = []
                 te_label_ls = []
@@ -150,18 +153,13 @@ def train(opt):
                 if best_acc < test_metrics['accuracy']:
                     best_acc = test_metrics['accuracy']
                     print("Best model is {}",test_metrics["accuracy"])
-                    torch.save(model, opt.saved_path + os.sep + "best_model.pt")
-                    number_not_good_epoch = 0
-                # if te_loss + opt.es_min_delta < best_loss:
-                #     best_loss = te_loss
-                #     best_epoch = epoch
-                #     print("Best model is {}",test_metrics["accuracy"])
-                #     torch.save(model, opt.saved_path + os.sep + "whole_model_han")
+                    torch.save(model, opt.saved_path + os.sep +"best_model.pt")
+                    number_not_good_epoch = 0       
         number_not_good_epoch += 1
             # Early stopping
             # if epoch - best_epoch > opt.es_patience > 0:
         if number_not_good_epoch > opt.es_patience > 0:
-            print("Stop training at epoch {}. The lowest loss achieved is {}".format(epoch, te_loss))
+            print("Stop training at epoch {}. The lowest loss achieved is {}".format(epoch))
             break
 
 

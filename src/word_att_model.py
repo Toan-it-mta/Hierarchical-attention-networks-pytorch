@@ -29,7 +29,6 @@ class WordAttNet(nn.Module):
         self._create_weights(mean=0.0, std=0.05)
 
     def _create_weights(self, mean=0.0, std=0.05):
-
         self.word_weight.data.normal_(mean, std)
         self.context_weight.data.normal_(mean, std)
 
