@@ -30,12 +30,12 @@ def get_args():
                         help="Early stopping's parameter: minimum change loss to qualify as an improvement")
     parser.add_argument("--es_patience", type=int, default=10,
                         help="Early stopping's parameter: number of epochs with no improvement after which training will be stopped. Set to 0 to disable this technique.")
-    parser.add_argument("--train_set", type=str, default="./dataset/plcx/new_train.npy")
-    parser.add_argument("--test_set", type=str, default="./dataset/plcx/test.npy")
+    parser.add_argument("--train_set", type=str, default="./dataset/vosint/train.npy")
+    parser.add_argument("--test_set", type=str, default="./dataset/vosint/test.npy")
     parser.add_argument("--test_interval", type=int, default=5, help="Number of epoches between testing phases")
     parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.npy")
     parser.add_argument("--log_path", type=str, default="tensorboard/han_voc")
-    parser.add_argument("--saved_path", type=str, default="trained_models/plcx")
+    parser.add_argument("--saved_path", type=str, default="trained_models/vosint")
     parser.add_argument("--max_word_length",type=int,default=50)
     parser.add_argument("--max_sent_length",type=int,default=70)
     args = parser.parse_args()
@@ -56,14 +56,12 @@ def train(opt):
                    "shuffle": True,
                    "drop_last": False}
 
-    # max_word_length, max_sent_length = get_max_lengths(opt.train_set)
     max_word_length, max_sent_length = opt.max_word_length, opt.max_sent_length
-    print(max_word_length, max_sent_length)
     print("=== Load Train Dataset ===")
-    training_set = MyDataset(opt.train_set, opt.word2vec_path, max_sent_length, max_word_length,True)
+    training_set = MyDataset(opt.train_set, opt.word2vec_path, max_sent_length, max_word_length,is_processed_data=True)
     training_generator = DataLoader(training_set, pin_memory=True, **training_params)
     print("=== Load Test Dataset ===")
-    test_set = MyDataset(opt.test_set, opt.word2vec_path, max_sent_length, max_word_length,True)
+    test_set = MyDataset(opt.test_set, opt.word2vec_path, max_sent_length, max_word_length,is_processed_data=True)
     test_generator = DataLoader(test_set, **test_params)
     print("=== Init Model ===")
     model = HierAttNet(opt.word_hidden_size, opt.sent_hidden_size, opt.batch_size, training_set.num_classes,
