@@ -1,9 +1,6 @@
 .vscode/*
 src/__pycache__/*
-dataset/plcx
-dataset/plcd
-dataset/VNTC/*
-dataset/VNTC_csv/*
+dataset/*
 models/*
 trained_models/*
 tensorbroad/*

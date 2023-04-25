@@ -11,16 +11,18 @@ import argparse
 import shutil
 import csv
 import numpy as np
-
+from src.hierarchical_att_model import HierAttNet
+import warnings
+warnings.filterwarnings("ignore")
 
 def get_args():
     parser = argparse.ArgumentParser(
         """Implementation of the model described in the paper: Hierarchical Attention Networks for Document Classification""")
     parser.add_argument("--batch_size", type=int, default=128)
-    parser.add_argument("--data_path", type=str, default="data/test.csv")
-    parser.add_argument("--pre_trained_model", type=str, default="trained_models/whole_model_han")
-    parser.add_argument("--word2vec_path", type=str, default="data/glove.6B.50d.txt")
-    parser.add_argument("--output", type=str, default="predictions")
+    parser.add_argument("--data_path", type=str, default="./dataset/vosint/test.json")
+    parser.add_argument("--pre_trained_model", type=str, default="./trained_models/vosint/state_dict_best_model.pt")
+    parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.txt")
+    parser.add_argument("--output", type=str, default="predictions/vosint")
     args = parser.parse_args()
     return args
 
@@ -32,13 +34,13 @@ def test(opt):
     if os.path.isdir(opt.output):
         shutil.rmtree(opt.output)
     os.makedirs(opt.output)
+    model = HierAttNet(150, 150, opt.batch_size, 3, "./models/glove.6B.300d.npy", 70, 50)
     if torch.cuda.is_available():
-        model = torch.load(opt.pre_trained_model)
+        model.load_state_dict(torch.load(opt.pre_trained_model))
     else:
-        model = torch.load(opt.pre_trained_model, map_location=lambda storage, loc: storage)
-    # test_set = MyDataset(opt.data_path, opt.word2vec_path, model.max_sent_length, model.max_word_length)
-    # test_generator = DataLoader(test_set, **test_params)
-    test_set = MyDataset(opt.data_path, opt.word2vec_path, model.max_sent_length, model.max_word_length,True)
+        model.load_state_dict(torch.load(opt.pre_trained_model, map_location=lambda storage, loc: storage))
+
+    test_set = MyDataset(opt.data_path, opt.word2vec_path, model.max_sent_length, model.max_word_length,1,False)
     test_generator = DataLoader(test_set, **test_params)
     if torch.cuda.is_available():
         model.cuda()
