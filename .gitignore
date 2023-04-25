@@ -1,8 +1,7 @@
-# Dataset
+.vscode/*
+src/__pycache__/*
 dataset/*
 models/*
-src/__pycache__/*
 trained_models/*
 tensorbroad/*
-dataset/*
-tensorbroad/*
+demo/*

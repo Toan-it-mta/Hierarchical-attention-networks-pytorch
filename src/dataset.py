@@ -1,30 +1,35 @@
-"""
-@author: Viet Nguyen <nhviet1009@gmail.com>
-"""
 import pandas as pd
 from torch.utils.data.dataset import Dataset
 import csv
 from nltk.tokenize import sent_tokenize, word_tokenize
-
+import json
 import numpy as np
 from tqdm import tqdm
+from sklearn.preprocessing import LabelEncoder
+import re
 
 class MyDataset(Dataset):
-    def __init__(self, data_path, dict_path, max_length_sentences=50, max_length_word=50,is_processed_data = False):
+    def __init__(self, data_path, dict_path, max_length_sentences=70, max_length_word=50,idx_label = 1,is_processed_data = False):
         super(MyDataset, self).__init__()
         self.max_length_sentences = max_length_sentences
         self.max_length_word = max_length_word
+        label_encoder = LabelEncoder()
+        label_encoder.classes_ = np.load("./classes.npy")
         if not is_processed_data:
             texts, labels = [], []
-            with open(data_path) as csv_file:
-                reader = csv.reader(csv_file, quotechar='"')
-                for idx, line in enumerate(reader):
-                    text = ""
-                    for tx in line[1:]:
-                        text += tx.lower()
-                        text += " "
-                    label = int(line[0])
+            with open(data_path) as json_file:
+                dataset = json.load(json_file)
+                for record in dataset:
+                    title = record.get("title","")
+                    description = record.get("description","")
+                    content = record.get("content","")
+                    label = record.get("label",[0,0])
+                    text = title+"\n"+description+"\n"+content
                     texts.append(text)
+                    label = label_encoder.transform(label)
+                    label = label[idx_label]
+                    if idx_label == 1:
+                        label = label-3
                     labels.append(label)
 
             self.texts = texts
@@ -39,34 +44,47 @@ class MyDataset(Dataset):
             dataset = [self.documents_encode,self.labels]
             new_dataset = np.asarray(dataset,dtype=object)
             args_path = data_path.split("/")
-            print(args_path)
             name_file = args_path[-1].split('.')[0]
-            print(name_file)
             str_path = "/".join(args_path[:-1])
             np.save(str_path+'/'+name_file+'.npy',new_dataset)
         else:
             dataset = np.load(data_path,allow_pickle=True)
             self.documents_encode = dataset[0]
             self.labels = dataset[1]
-
         self.num_classes = len(set(self.labels))
 
     def __len__(self):
         return len(self.labels)
 
+    def preprocessing_text(self,text):
+        text = re.sub("\r","\n",text)
+        text = re.sub("\n{2,}","\n",text)
+        text = re.sub("…",".",text)
+        text = re.sub("\.{2,}",".",text)
+        text.strip()
+        return text
+    
     def process(self):
+        # word_set_un = set()
         documents_encode = []
         for i in tqdm(range(0,len(self.texts))):
+            # Thêm tách câu bằng dấu \n nữa
             text = self.texts[i]
+            text = self.preprocessing_text(text)
+            paragraphs = text.split("\n")
             document_encode = []
-            for sentence in sent_tokenize(text=text):
-                sentence_encode = []
-                for word in word_tokenize(text=sentence):
-                    word_encode = self.new_dict.get(word,-1)
-                    sentence_encode.append(word_encode)
-                document_encode.append(sentence_encode)
+            for paragraph in paragraphs:
+                for sentence in sent_tokenize(text=paragraph):
+                    sentence_encode = []
+                    for word in word_tokenize(text=sentence):
+                        word_encode = self.new_dict.get(word.lower(),-1)
+                        # if word_encode == -1:
+                        #     word_set_un.add(word)
+                        sentence_encode.append(word_encode)
+                    document_encode.append(sentence_encode)
             document_encode = self.padding_data(document_encode)
             documents_encode.append(document_encode)
+        # print(word_set_un)
         return documents_encode
 
     def padding_data(self,document_encode):
@@ -94,9 +112,9 @@ class MyDataset(Dataset):
 
 
 if __name__ == '__main__':
-    train = MyDataset(data_path="./dataset/plcx/new_train.csv",
+    train = MyDataset(data_path="./dataset/vosint/train.json",
         dict_path="./models/glove.6B.300d.txt",
         is_processed_data=False)
-    test = MyDataset(data_path="./dataset/plcx/test.csv",
+    test = MyDataset(data_path="./dataset/vosint/test.json",
     dict_path="./models/glove.6B.300d.txt",
     is_processed_data=False)
