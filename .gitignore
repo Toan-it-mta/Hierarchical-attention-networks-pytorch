@@ -1,6 +1,5 @@
 # Dataset
-dataset/VNTC/*
-dataset/VNTC_csv/*
+dataset/*
 models/*
 src/__pycache__/*
 trained_models/*
