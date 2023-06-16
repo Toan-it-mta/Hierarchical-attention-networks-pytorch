@@ -14,7 +14,7 @@ class SentAttNet(nn.Module):
         self.sent_bias = nn.Parameter(torch.Tensor(1, 2 * sent_hidden_size))
         self.context_weight = nn.Parameter(torch.Tensor(2 * sent_hidden_size, 1))
 
-        self.gru = nn.GRU(2 * word_hidden_size, sent_hidden_size, bidirectional=True)
+        self.gru = nn.LSTM(2 * word_hidden_size, sent_hidden_size, bidirectional=True)
         self.fc = nn.Linear(2 * sent_hidden_size, num_classes)
         # self.sent_softmax = nn.Softmax()
         # self.fc_softmax = nn.Softmax()

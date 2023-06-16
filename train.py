@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader
 from src.utils import get_max_lengths, get_evaluation
 from src.dataset import MyDataset
 from src.hierarchical_att_model import HierAttNet
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 import argparse
 import shutil
 import numpy as np
@@ -30,8 +30,8 @@ def get_args():
                         help="Early stopping's parameter: minimum change loss to qualify as an improvement")
     parser.add_argument("--es_patience", type=int, default=10,
                         help="Early stopping's parameter: number of epochs with no improvement after which training will be stopped. Set to 0 to disable this technique.")
-    parser.add_argument("--train_set", type=str, default="./dataset/vosint/train.npy")
-    parser.add_argument("--test_set", type=str, default="./dataset/vosint/test.npy")
+    parser.add_argument("--train_set", type=str, default="./dataset/plcx/train.npy")
+    parser.add_argument("--test_set", type=str, default="./dataset/plcx/test.npy")
     parser.add_argument("--test_interval", type=int, default=5, help="Number of epoches between testing phases")
     parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.npy")
     parser.add_argument("--log_path", type=str, default="tensorboard/han_voc")
@@ -74,7 +74,7 @@ def train(opt):
     if os.path.isdir(opt.log_path):
         shutil.rmtree(opt.log_path)
     os.makedirs(opt.log_path)
-    writer = SummaryWriter(opt.log_path)
+    # writer = SummaryWriter(opt.log_path)
 
     if torch.cuda.is_available():
         model.cuda()
@@ -108,8 +108,6 @@ def train(opt):
                 num_iter_per_epoch,
                 optimizer.param_groups[0]['lr'],
                 loss, training_metrics["accuracy"]))
-            writer.add_scalar('Train/Loss', loss, epoch * num_iter_per_epoch + iter)
-            writer.add_scalar('Train/Accuracy', training_metrics["accuracy"], epoch * num_iter_per_epoch + iter)
 
             if iter % opt.test_interval == 0:
                 model.eval()
@@ -144,8 +142,8 @@ def train(opt):
                     opt.num_epoches,
                     optimizer.param_groups[0]['lr'],
                     te_loss, test_metrics["accuracy"]))
-                writer.add_scalar('Test/Loss', te_loss, epoch)
-                writer.add_scalar('Test/Accuracy', test_metrics["accuracy"], epoch)
+                # writer.add_scalar('Test/Loss', te_loss, epoch)
+                # writer.add_scalar('Test/Accuracy', test_metrics["accuracy"], epoch)
                 model.train()
                 
                 if best_acc < test_metrics['accuracy']:
