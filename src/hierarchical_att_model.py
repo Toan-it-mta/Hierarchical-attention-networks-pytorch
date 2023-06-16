@@ -24,14 +24,20 @@ class HierAttNet(nn.Module):
             batch_size = last_batch_size
         else:
             batch_size = self.batch_size
-        # UPdate for LSTM
-        self.word_hidden_state = [torch.zeros(2, batch_size, self.word_hidden_size),torch.zeros(2, batch_size, self.word_hidden_size)]
-        self.sent_hidden_state = [torch.zeros(2, batch_size, self.sent_hidden_size),torch.zeros(2, batch_size, self.sent_hidden_size)]
+        # GRU
+        self.word_hidden_state = torch.zeros(2, batch_size, self.word_hidden_size)
+        self.sent_hidden_state = torch.zeros(2, batch_size, self.sent_hidden_size)
         if torch.cuda.is_available():
-            self.word_hidden_state[0] = self.word_hidden_state[0].cuda()
-            self.sent_hidden_state[0] = self.sent_hidden_state[0].cuda()
-            self.word_hidden_state[1] = self.word_hidden_state[1].cuda()
-            self.sent_hidden_state[1] = self.sent_hidden_state[1].cuda()
+            self.word_hidden_state = self.word_hidden_state.cuda()
+            self.sent_hidden_state = self.sent_hidden_state.cuda()
+        # UPdate for LSTM
+        # self.word_hidden_state = [torch.zeros(2, batch_size, self.word_hidden_size),torch.zeros(2, batch_size, self.word_hidden_size)]
+        # self.sent_hidden_state = [torch.zeros(2, batch_size, self.sent_hidden_size),torch.zeros(2, batch_size, self.sent_hidden_size)]
+        # if torch.cuda.is_available():
+        #     self.word_hidden_state[0] = self.word_hidden_state[0].cuda()
+        #     self.sent_hidden_state[0] = self.sent_hidden_state[0].cuda()
+        #     self.word_hidden_state[1] = self.word_hidden_state[1].cuda()
+        #     self.sent_hidden_state[1] = self.sent_hidden_state[1].cuda()
 
 
     def forward(self, input):

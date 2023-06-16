@@ -30,12 +30,12 @@ def get_args():
                         help="Early stopping's parameter: minimum change loss to qualify as an improvement")
     parser.add_argument("--es_patience", type=int, default=10,
                         help="Early stopping's parameter: number of epochs with no improvement after which training will be stopped. Set to 0 to disable this technique.")
-    parser.add_argument("--train_set", type=str, default="./dataset/plcx/train.npy")
-    parser.add_argument("--test_set", type=str, default="./dataset/plcx/test.npy")
-    parser.add_argument("--test_interval", type=int, default=5, help="Number of epoches between testing phases")
+    parser.add_argument("--train_set", type=str, default="./dataset/vosint/train.npy")
+    parser.add_argument("--test_set", type=str, default="./dataset/vosint/test.npy")
+    parser.add_argument("--test_interval", type=int, default=10, help="Number of epoches between testing phases")
     parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.npy")
     parser.add_argument("--log_path", type=str, default="tensorboard/han_voc")
-    parser.add_argument("--saved_path", type=str, default="trained_models/vosint")
+    parser.add_argument("--saved_path", type=str, default="trained_models/vosint_newlabel")
     parser.add_argument("--max_word_length",type=int,default=50)
     parser.add_argument("--max_sent_length",type=int,default=70)
     args = parser.parse_args()
@@ -101,7 +101,9 @@ def train(opt):
             loss.backward()
             optimizer.step()
             training_metrics = get_evaluation(label.cpu().numpy(), predictions.cpu().detach().numpy(), list_metrics=["accuracy"])
-            print("Epoch: {}/{}, Iteration: {}/{}, Lr: {}, Loss: {}, Accuracy: {}".format(
+        
+            if iter % opt.test_interval == 0:
+                print("Epoch: {}/{}, Iteration: {}/{}, Lr: {}, Loss: {}, Accuracy: {}".format(
                 epoch + 1,
                 opt.num_epoches,
                 iter + 1,
@@ -109,7 +111,7 @@ def train(opt):
                 optimizer.param_groups[0]['lr'],
                 loss, training_metrics["accuracy"]))
 
-            if iter % opt.test_interval == 0:
+
                 model.eval()
                 loss_ls = []
                 te_label_ls = []

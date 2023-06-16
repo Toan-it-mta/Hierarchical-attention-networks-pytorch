@@ -25,7 +25,7 @@ class WordAttNet(nn.Module):
         self.context_weight = nn.Parameter(torch.Tensor(2 * hidden_size, 1))
         print("==== Load Embedding ===")
         self.lookup = nn.Embedding(num_embeddings=dict_len, embedding_dim=embed_size).from_pretrained(dict)
-        self.gru = nn.LSTM(embed_size, hidden_size, bidirectional=True)
+        self.gru = nn.GRU(embed_size, hidden_size, bidirectional=True)
         self._create_weights(mean=0.0, std=0.05)
 
     def _create_weights(self, mean=0.0, std=0.05):
