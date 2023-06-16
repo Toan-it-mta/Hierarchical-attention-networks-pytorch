@@ -30,12 +30,12 @@ def get_args():
                         help="Early stopping's parameter: minimum change loss to qualify as an improvement")
     parser.add_argument("--es_patience", type=int, default=10,
                         help="Early stopping's parameter: number of epochs with no improvement after which training will be stopped. Set to 0 to disable this technique.")
-    parser.add_argument("--train_set", type=str, default="./dataset/plcx/new_train.npy")
+    parser.add_argument("--train_set", type=str, default="./dataset/plcx/train.npy")
     parser.add_argument("--test_set", type=str, default="./dataset/plcx/test.npy")
     parser.add_argument("--test_interval", type=int, default=5, help="Number of epoches between testing phases")
     parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.npy")
     parser.add_argument("--log_path", type=str, default="tensorboard/han_voc")
-    parser.add_argument("--saved_path", type=str, default="trained_models/plcx_finetune_new")
+    parser.add_argument("--saved_path", type=str, default="trained_models/plcx_finetune")
     parser.add_argument("--pretrain_model",type=str,default="trained_models/VNTC/best_model.pt")
     parser.add_argument("--max_word_length",type=int,default=50)
     parser.add_argument("--max_sent_length",type=int,default=70)
@@ -57,7 +57,6 @@ def train(opt):
                    "shuffle": True,
                    "drop_last": False}
 
-    # max_word_length, max_sent_length = get_max_lengths(opt.train_set)
     max_word_length, max_sent_length = opt.max_word_length, opt.max_sent_length
     print(max_word_length, max_sent_length)
     print("=== Load Train Dataset ===")
