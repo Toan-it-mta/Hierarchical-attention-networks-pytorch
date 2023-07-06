@@ -23,10 +23,10 @@ class WordAttNet(nn.Module):
             self.lookup = nn.Embedding(num_embeddings=dict_len, embedding_dim=embed_size).from_pretrained(dict)
         else:
             # Load embedding from bert
-            model = AutoModel.from_pretrained(bert_model)
+            self.model = AutoModel.from_pretrained(bert_model)
             embed_size = 768
-            self.lookup = model.embeddings.word_embeddings
-            del model
+            # self.lookup = model.embeddings.word_embeddings
+            # del model
 
         self.word_weight = nn.Parameter(torch.Tensor(2 * hidden_size, 2 * hidden_size))
         self.word_bias = nn.Parameter(torch.Tensor(1, 2 * hidden_size))
@@ -40,8 +40,9 @@ class WordAttNet(nn.Module):
         self.context_weight.data.normal_(mean, std)
 
     def forward(self, input, hidden_state):
-        output = self.lookup(input)
-        output = output[0]
+        output = self.model(input,return_dict=False)[0]
+        # output = self.lookup(input)
+        # output = output[0]
         f_output, h_output = self.gru(output.float(), hidden_state)  # feature output and hidden state output
         output = matrix_mul(f_output, self.word_weight, self.word_bias)
         output = matrix_mul(output, self.context_weight).permute(1,0)

@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore")
 def get_args():
     parser = argparse.ArgumentParser(
         """Implementation of the model described in the paper: Hierarchical Attention Networks for Document Classification""")
-    parser.add_argument("--batch_size", type=int, default=32)
+    parser.add_argument("--batch_size", type=int, default=8)
     parser.add_argument("--num_epoches", type=int, default=150)
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--momentum", type=float, default=0.9)
@@ -36,7 +36,7 @@ def get_args():
     parser.add_argument("--saved_path", type=str, default="trained_models/vosint_newlabel")
     parser.add_argument("--max_word_length",type=int,default=50)
     parser.add_argument("--max_sent_length",type=int,default=70)
-    parser.add_argument("--bert_model",type=str,default='NlpHUST/vibert4news-base-cased')
+    parser.add_argument("--bert_model",type=str,default='distilbert-base-uncased')
     args = parser.parse_args()
     return args
 
@@ -95,56 +95,56 @@ def train(opt):
             loss.backward()
             optimizer.step()
             training_metrics = get_evaluation(label.cpu().numpy(), predictions.cpu().detach().numpy(), list_metrics=["accuracy"])
+            print("Epoch: {}/{}, Iteration: {}/{}, Lr: {}, Loss: {}, Accuracy: {}".format(
+            epoch + 1,
+            opt.num_epoches,
+            iter + 1,
+            num_iter_per_epoch,
+            optimizer.param_groups[0]['lr'],
+            loss, training_metrics["accuracy"]))
         
-            if iter % opt.test_interval == 0:
-                print("Epoch: {}/{}, Iteration: {}/{}, Lr: {}, Loss: {}, Accuracy: {}".format(
+        if iter % opt.test_interval == 0:
+           
+            model.eval()
+            loss_ls = []
+            te_label_ls = []
+            te_pred_ls = []
+            for te_feature, te_label in test_generator:
+                num_sample = len(te_label)
+                if torch.cuda.is_available():
+                    te_feature = te_feature.cuda()
+                    te_label = te_label.cuda()
+                with torch.no_grad():
+                    model._init_hidden_state(num_sample)
+                    te_predictions = model(te_feature)
+                te_loss = criterion(te_predictions, te_label)
+                loss_ls.append(te_loss * num_sample)
+                te_label_ls.extend(te_label.clone().cpu())
+                te_pred_ls.append(te_predictions.clone().cpu())
+            te_loss = sum(loss_ls) / test_set.__len__()
+            te_pred = torch.cat(te_pred_ls, 0)
+            te_label = np.array(te_label_ls)
+            test_metrics = get_evaluation(te_label, te_pred.numpy(), list_metrics=["accuracy","loss", "confusion_matrix"])
+            output_file.write(
+                "Epoch: {}/{} \nTest loss: {} Test accuracy: {} \nTest confusion matrix: \n{}\n Test F1-Score: \n{}\n".format(
+                    epoch + 1, opt.num_epoches,
+                    te_loss,
+                    test_metrics["accuracy"],
+                    test_metrics["confusion_matrix"],
+                    test_metrics['F1']))
+            print("Epoch: {}/{}, Lr: {}, Loss: {}, Accuracy: {}".format(
                 epoch + 1,
                 opt.num_epoches,
-                iter + 1,
-                num_iter_per_epoch,
                 optimizer.param_groups[0]['lr'],
-                loss, training_metrics["accuracy"]))
+                te_loss, test_metrics["accuracy"]))
+            model.train()
+            
+            if best_acc < test_metrics['accuracy']:
+                best_acc = test_metrics['accuracy']
+                print("Best model is {}",test_metrics["accuracy"])
+                torch.save(model, opt.saved_path + os.sep +"best_model.pt")
+                number_not_good_epoch = 0     
 
-
-                model.eval()
-                loss_ls = []
-                te_label_ls = []
-                te_pred_ls = []
-                for te_feature, te_label in test_generator:
-                    num_sample = len(te_label)
-                    if torch.cuda.is_available():
-                        te_feature = te_feature.cuda()
-                        te_label = te_label.cuda()
-                    with torch.no_grad():
-                        model._init_hidden_state(num_sample)
-                        te_predictions = model(te_feature)
-                    te_loss = criterion(te_predictions, te_label)
-                    loss_ls.append(te_loss * num_sample)
-                    te_label_ls.extend(te_label.clone().cpu())
-                    te_pred_ls.append(te_predictions.clone().cpu())
-                te_loss = sum(loss_ls) / test_set.__len__()
-                te_pred = torch.cat(te_pred_ls, 0)
-                te_label = np.array(te_label_ls)
-                test_metrics = get_evaluation(te_label, te_pred.numpy(), list_metrics=["accuracy","loss", "confusion_matrix"])
-                output_file.write(
-                    "Epoch: {}/{} \nTest loss: {} Test accuracy: {} \nTest confusion matrix: \n{}\n Test F1-Score: \n{}\n".format(
-                        epoch + 1, opt.num_epoches,
-                        te_loss,
-                        test_metrics["accuracy"],
-                        test_metrics["confusion_matrix"],
-                        test_metrics['F1']))
-                print("Epoch: {}/{}, Lr: {}, Loss: {}, Accuracy: {}".format(
-                    epoch + 1,
-                    opt.num_epoches,
-                    optimizer.param_groups[0]['lr'],
-                    te_loss, test_metrics["accuracy"]))
-                model.train()
-                
-                if best_acc < test_metrics['accuracy']:
-                    best_acc = test_metrics['accuracy']
-                    print("Best model is {}",test_metrics["accuracy"])
-                    torch.save(model, opt.saved_path + os.sep +"best_model.pt")
-                    number_not_good_epoch = 0       
         number_not_good_epoch += 1
 
         if number_not_good_epoch > opt.es_patience > 0:
