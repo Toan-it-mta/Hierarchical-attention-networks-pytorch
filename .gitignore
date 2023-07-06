@@ -1,6 +1,8 @@
 .vscode/*
 src/__pycache__/*
-dataset/*
+dataset/BBC_news/*
+dataset/VNTC/*
+dataset/Preprocess.ipynb
 models/*
 trained_models/*
 tensorbroad/*
