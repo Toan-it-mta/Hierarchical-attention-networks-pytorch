@@ -8,11 +8,9 @@ from torch.utils.data import DataLoader
 from src.utils import get_max_lengths, get_evaluation
 from src.dataset import MyDataset
 from src.hierarchical_att_model import HierAttNet
-# from torch.utils.tensorboard import SummaryWriter
 import argparse
 import shutil
 import numpy as np
-# from torchsummary import summary
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -24,20 +22,21 @@ def get_args():
     parser.add_argument("--num_epoches", type=int, default=150)
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--momentum", type=float, default=0.9)
-    parser.add_argument("--word_hidden_size", type=int, default=150)
-    parser.add_argument("--sent_hidden_size", type=int, default=150)
+    parser.add_argument("--word_hidden_size", type=int, default=384)
+    parser.add_argument("--sent_hidden_size", type=int, default=384)
     parser.add_argument("--es_min_delta", type=float, default=0.0,
                         help="Early stopping's parameter: minimum change loss to qualify as an improvement")
     parser.add_argument("--es_patience", type=int, default=10,
                         help="Early stopping's parameter: number of epochs with no improvement after which training will be stopped. Set to 0 to disable this technique.")
-    parser.add_argument("--train_set", type=str, default="./dataset/vosint/train.npy")
-    parser.add_argument("--test_set", type=str, default="./dataset/vosint/test.npy")
+    parser.add_argument("--train_set", type=str, default="./dataset/vosint/train.json")
+    parser.add_argument("--test_set", type=str, default="./dataset/vosint/test.json")
     parser.add_argument("--test_interval", type=int, default=10, help="Number of epoches between testing phases")
     parser.add_argument("--word2vec_path", type=str, default="./models/glove.6B.300d.npy")
     parser.add_argument("--log_path", type=str, default="tensorboard/han_voc")
     parser.add_argument("--saved_path", type=str, default="trained_models/vosint_newlabel")
     parser.add_argument("--max_word_length",type=int,default=50)
     parser.add_argument("--max_sent_length",type=int,default=70)
+    parser.add_argument("--bert_model",type=str,default='NlpHUST/vibert4news-base-cased')
     args = parser.parse_args()
     return args
 
@@ -47,45 +46,40 @@ def train(opt):
         torch.cuda.manual_seed(123)
     else:
         torch.manual_seed(123)
+    
     output_file = open(opt.saved_path + os.sep + "logs.txt", "w")
     output_file.write("Model's parameters: {}".format(vars(opt)))
     training_params = {"batch_size": opt.batch_size,
                        "shuffle": True,
                        "drop_last": True}
+    
     test_params = {"batch_size": opt.batch_size,
                    "shuffle": True,
                    "drop_last": False}
 
     max_word_length, max_sent_length = opt.max_word_length, opt.max_sent_length
     print("=== Load Train Dataset ===")
-    training_set = MyDataset(opt.train_set, opt.word2vec_path, max_sent_length, max_word_length,is_processed_data=True)
+    training_set = MyDataset(opt.train_set, opt.word2vec_path, max_sent_length, max_word_length,is_processed_data=False,bert_model=opt.bert_model)
     training_generator = DataLoader(training_set, pin_memory=True, **training_params)
     print("=== Load Test Dataset ===")
-    test_set = MyDataset(opt.test_set, opt.word2vec_path, max_sent_length, max_word_length,is_processed_data=True)
+    test_set = MyDataset(opt.test_set, opt.word2vec_path, max_sent_length, max_word_length,is_processed_data=False,bert_model=opt.bert_model)
     test_generator = DataLoader(test_set, **test_params)
     print("=== Init Model ===")
     model = HierAttNet(opt.word_hidden_size, opt.sent_hidden_size, opt.batch_size, training_set.num_classes,
-                       opt.word2vec_path, max_sent_length, max_word_length)
-
-    print(model)
-    pass
+                       opt.word2vec_path, max_sent_length, max_word_length,bert_model=opt.bert_model)
     print("=== Init Model  Done ===")
 
     if os.path.isdir(opt.log_path):
         shutil.rmtree(opt.log_path)
     os.makedirs(opt.log_path)
-    # writer = SummaryWriter(opt.log_path)
 
     if torch.cuda.is_available():
         model.cuda()
 
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(filter(lambda p: p.requires_grad, model.parameters()), lr=opt.lr, momentum=opt.momentum)
-    best_loss = 1e5
-    best_epoch = 0
     best_acc = 0
     model.train()
-    best_model = None
     number_not_good_epoch = 0
     print("="*10+"Train"+"+"*10)
     num_iter_per_epoch = len(training_generator)
@@ -144,8 +138,6 @@ def train(opt):
                     opt.num_epoches,
                     optimizer.param_groups[0]['lr'],
                     te_loss, test_metrics["accuracy"]))
-                # writer.add_scalar('Test/Loss', te_loss, epoch)
-                # writer.add_scalar('Test/Accuracy', test_metrics["accuracy"], epoch)
                 model.train()
                 
                 if best_acc < test_metrics['accuracy']:
@@ -154,12 +146,10 @@ def train(opt):
                     torch.save(model, opt.saved_path + os.sep +"best_model.pt")
                     number_not_good_epoch = 0       
         number_not_good_epoch += 1
-            # Early stopping
-            # if epoch - best_epoch > opt.es_patience > 0:
-        if number_not_good_epoch > opt.es_patience > 0:
-            print("Stop training at epoch {}. The lowest loss achieved is {}".format(epoch))
-            break
 
+        if number_not_good_epoch > opt.es_patience > 0:
+            print("Stop training at epoch {}".format(epoch))
+            break
 
 if __name__ == "__main__":
     opt = get_args()
