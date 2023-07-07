@@ -50,7 +50,7 @@ class MyDataset(Dataset):
         texts, labels = [], []
         with open(json_file, encoding='utf-8') as json_file:
             dataset = json.load(json_file)
-            for record in dataset:
+            for record in dataset[:500]:
                 title = record.get("title","")
                 description = record.get("description","")
                 content = record.get("content","")

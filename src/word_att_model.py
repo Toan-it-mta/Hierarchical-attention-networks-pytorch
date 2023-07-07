@@ -23,13 +23,13 @@ class WordAttNet(nn.Module):
             self.lookup = nn.Embedding(num_embeddings=dict_len, embedding_dim=embed_size).from_pretrained(dict)
         else:
             # Load embedding from bert
-            self.model = AutoModel.from_pretrained(bert_model)
+            self.bert = AutoModel.from_pretrained(bert_model)
             embed_size = 768
             # self.lookup = model.embeddings.word_embeddings
             # del model
 
         self.word_weight = nn.Parameter(torch.Tensor(2 * hidden_size, 2 * hidden_size))
-        self.word_bias = nn.Parameter(torch.Tensor(1, 2 * hidden_size))
+        self.word_bias = nn.Parameter(torch.rand(1, 2 * hidden_size))
         self.context_weight = nn.Parameter(torch.Tensor(2 * hidden_size, 1))
         
         self.gru = nn.GRU(embed_size, hidden_size, bidirectional=True)
@@ -40,12 +40,22 @@ class WordAttNet(nn.Module):
         self.context_weight.data.normal_(mean, std)
 
     def forward(self, input, hidden_state):
-        output = self.model(input,return_dict=False)[0]
+        output = self.bert(input,return_dict=False)[0]
         # output = self.lookup(input)
         # output = output[0]
-        f_output, h_output = self.gru(output.float(), hidden_state)  # feature output and hidden state output
+        assert not torch.isnan(hidden_state).any()
+        assert not torch.isnan(output).any()
+        f_output, h_output = self.gru(output, hidden_state)  # feature output and hidden state output
+        # print(f_output)
+        assert not torch.isnan(f_output).any()
+        assert not torch.isnan(self.word_weight).any()
+        assert not torch.isnan(self.word_bias).any()
         output = matrix_mul(f_output, self.word_weight, self.word_bias)
+        # output = torch.nan_to_num(output)
+        assert not torch.isnan(self.context_weight).any()
+        assert not torch.isnan(output).any()
         output = matrix_mul(output, self.context_weight).permute(1,0)
+        # print(output)
         output = F.softmax(output)
         output = element_wise_mul(f_output,output.permute(1,0))
         output = self.relu(output)

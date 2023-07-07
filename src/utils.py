@@ -38,7 +38,7 @@ def matrix_mul(input, weight, bias=False):
     for feature in input:
         if feature.ndim == 1:
             feature = feature.view(1,-1)
-        feature = torch.mm(feature, weight)
+        feature = torch.matmul(feature, weight)
         if isinstance(bias, torch.nn.parameter.Parameter):
             feature = feature + bias.expand(feature.size()[0], bias.size()[1])
         feature = torch.tanh(feature).unsqueeze(0)

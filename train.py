@@ -18,9 +18,9 @@ warnings.filterwarnings("ignore")
 def get_args():
     parser = argparse.ArgumentParser(
         """Implementation of the model described in the paper: Hierarchical Attention Networks for Document Classification""")
-    parser.add_argument("--batch_size", type=int, default=8)
+    parser.add_argument("--batch_size", type=int, default=16)
     parser.add_argument("--num_epoches", type=int, default=150)
-    parser.add_argument("--lr", type=float, default=0.1)
+    parser.add_argument("--lr", type=float, default=0.01)
     parser.add_argument("--momentum", type=float, default=0.9)
     parser.add_argument("--word_hidden_size", type=int, default=384)
     parser.add_argument("--sent_hidden_size", type=int, default=384)
@@ -68,6 +68,10 @@ def train(opt):
     model = HierAttNet(opt.word_hidden_size, opt.sent_hidden_size, opt.batch_size, training_set.num_classes,
                        opt.word2vec_path, max_sent_length, max_word_length,bert_model=opt.bert_model)
     print("=== Init Model  Done ===")
+    # print(model)
+
+    for param in model.word_att_net.bert.parameters():
+        param.requires_grad = False
 
     if os.path.isdir(opt.log_path):
         shutil.rmtree(opt.log_path)
@@ -80,6 +84,8 @@ def train(opt):
     optimizer = torch.optim.SGD(filter(lambda p: p.requires_grad, model.parameters()), lr=opt.lr, momentum=opt.momentum)
     best_acc = 0
     model.train()
+
+    
     number_not_good_epoch = 0
     print("="*10+"Train"+"+"*10)
     num_iter_per_epoch = len(training_generator)
